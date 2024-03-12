@@ -1,0 +1,77 @@
+.exerc_container {
+  padding: 30px 20px 30px 20px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.exerc_container h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-align: center;
+  background: #681e0b;
+  background: -webkit-linear-gradient(to left, #681e0b 0%, #3a1b74 100%);
+  background: -moz-linear-gradient(to left, #681e0b 0%, #3a1b74 100%);
+  background: linear-gradient(to left, #681e0b 0%, #3a1b74 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "aero", sans-serif;
+}
+
+.exerc_container ul {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.exerc_container ul li {
+  font-family: sans-serif;
+}
+
+.exerc_item {
+  color: white;
+  padding: 15px;
+  background: rgba(15, 23, 42, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid #475569;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.exerc_item:hover {
+  border: 1px solid #64a5ff;
+  cursor: pointer;
+  background: rgba(27, 42, 75, 0.5);
+}
+
+.exerc_btn {
+  width: 110px;
+  margin: 20px auto 10px auto;
+  padding: 10px;
+  background: #01113680;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid #062f69;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  gap: 5px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+
+.exerc_btn:hover {
+  border: 1px solid #0060e6;
+  cursor: pointer;
+  background: #01288180;
+}
