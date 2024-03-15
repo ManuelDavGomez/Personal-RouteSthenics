@@ -4,7 +4,6 @@ import Hero from "../videos/hero.mp4";
 import Exerc from "../components/Exercise/Exerc.jsx";
 import ExercBasic from "../components/Exercise/ExercBasic.jsx";
 import Warm from "../components/Exercise/Warm.jsx";
-import Foot from "../components/Footer.astro";
 ---
 
 <Layout title="Calisthenics Roadmaps">
@@ -30,7 +29,6 @@ import Foot from "../components/Footer.astro";
       <Warm client:load />
       <ExercBasic client:load />
     </section>
-    <Foot />
   </main>
 </Layout>
 
@@ -93,7 +91,6 @@ import Foot from "../components/Footer.astro";
     margin-bottom: 60px;
   }
   .hero_home h1 {
-
     padding-bottom: 20px;
     text-align: center;
     background: #101cba;
