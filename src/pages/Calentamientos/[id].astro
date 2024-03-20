@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero3 from "../../videos/hero3.mp4";
+
+export async function getStaticPaths() {
+  const data = await fetch("http://localhost:3000/warmup").then(
+    (response) => response.json()
+  );
+
+  return data.map((post: { _id: String }) => {
+    return {
+      params: { id: post._id },
+    };
+  });
+}
+
+const { id } = Astro.params;
+
+const postRes = await fetch(`http://localhost:3000/warmup/${id}`);
+const post = await postRes.json();
+---
+
+<Layout title="RoutheSthenics - WarmUp">
+  <section class="hero_video">
+    <video autoplay muted loop id="video-bg">
+      <source src={Hero3} type="video/mp4" />
+      Tu navegador no admite la etiqueta de video.
+    </video>
+    <div class="overlay"></div>
+  </section>
+  <div class="container_general">
+    <h1>Good dog, {id}!</h1>
+    <h2>{post.warmName}</h2>
+    <h3>{post.warmDesc}</h3>
+  </div>
+</Layout>

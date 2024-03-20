@@ -23,9 +23,11 @@ const ExercBasic = () => {
         <h2>Habilidades (Skills)</h2>
         <ul>
           {basics.slice(0, visible).map((basic) => (
-            <li key={basic._id} className="exerc_item">
-              {basic.exerciseName}
-            </li>
+            <a href={`Skills/${basic._id}`}>
+              <li key={basic._id} className="exerc_item">
+                {basic.exerciseName}
+              </li>
+            </a>
           ))}
         </ul>
         {visible < basics.length && (

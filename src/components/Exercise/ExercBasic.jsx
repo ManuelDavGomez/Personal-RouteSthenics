@@ -21,9 +21,9 @@ const ExercBasic = () => {
     <>
       <section className="exerc_container">
         <h2>Ejercicios Básicos</h2>
-        <ul>
+        <ul >
           {basics.slice(0, visible).map((basic) => (
-            <a href={`/exercisebasic/${basic._id}`}>
+            <a href={`/EjerciciosBasicos/${basic._id}`}>
               <li key={basic._id} className="exerc_item">
                 {basic.exerciseName}
               </li>

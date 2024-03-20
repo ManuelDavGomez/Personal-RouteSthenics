@@ -22,10 +22,12 @@ const ExercBasic = () => {
       <section className="exerc_container">
         <h2>Calentamientos</h2>
         <ul>
-          {basics.slice(0, visible).map((basic) => (
-            <li key={basic._id} className="exerc_item">
-              {basic.warmName}
-            </li>
+        {basics.slice(0, visible).map((basic) => (
+            <a href={`/Calentamientos/${basic._id}`}>
+              <li key={basic._id} className="exerc_item">
+                {basic.warmName}
+              </li>
+            </a>
           ))}
         </ul>
         {visible < basics.length && (

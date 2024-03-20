@@ -1,0 +1,91 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero3 from "../../videos/hero3.mp4";
+import { YouTube } from "astro-embed";
+
+export async function getStaticPaths() {
+  const data = await fetch("http://localhost:3000/exercise").then((response) =>
+    response.json()
+  );
+
+  return data.map((post: { _id: String }) => {
+    return {
+      params: { id: post._id },
+    };
+  });
+}
+
+const { id } = Astro.params;
+
+const postRes = await fetch(`http://localhost:3000/exercise/${id}`);
+const post = await postRes.json();
+---
+
+<Layout title="RouteSthenics - Skills">
+  <section class="hero_video">
+    <video autoplay muted loop id="video-bg">
+      <source src={Hero3} type="video/mp4" />
+      Tu navegador no admite la etiqueta de video.
+    </video>
+    <div class="overlay"></div>
+  </section>
+  <section class="container_general">
+    <h2 class="Title">{post.exerciseName}</h2>
+    <p class="Text">{post.exerciseDesc}</p>
+    <div>
+      {
+        post.youtubeURLs &&
+          post.youtubeURLs.map((url, index) => (
+            <section class="exercise_container">
+              <h3>{post.progressionNames[index]}</h3>
+              <YouTube id={url} class="video" />
+            </section>
+          ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .Title {
+    color: white;
+    font-family: "aero";
+  }
+
+  .Text {
+    font-size: 1.125rem;
+    color: #9ca391;
+    line-height: 1.75rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .exercise_container {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 80px
+  }
+
+  .exercise_container h3{
+    color: white;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .video {
+    width: 100%;
+  }
+
+  @media (min-width: 810px) {
+    .exercise_container {
+      width: 720px;
+    }
+
+    .video {
+      width: 80%;
+    }
+  }
+</style>
