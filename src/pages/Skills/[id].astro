@@ -30,34 +30,72 @@ const post = await postRes.json();
     <div class="overlay"></div>
   </section>
   <section class="container_general">
-    <h2 class="Title">{post.exerciseName}</h2>
-    <p class="Text">{post.exerciseDesc}</p>
-    <div>
-      {
-        post.youtubeURLs &&
-          post.youtubeURLs.map((url, index) => (
-            <section class="exercise_container">
-              <h3>{post.progressionNames[index]}</h3>
-              <YouTube id={url} class="video" />
-            </section>
-          ))
-      }
-    </div>
+    <h1>Progresiones</h1>
+    <article class="containers_generals">
+      <section class="containers_one">
+        <h2 class="Title">{post.exerciseName}</h2>
+        <p class="Text">{post.exerciseDesc}</p>
+      </section>
+
+      <div class="containers_two">
+        {
+          post.youtubeURLs &&
+            post.youtubeURLs.map((url, index) => (
+              <section class="exercise_container">
+                <h3>{post.progressionNames[index]}</h3>
+                <YouTube id={url} class="video" />
+              </section>
+            ))
+        }
+      </div>
+    </article>
   </section>
 </Layout>
 
 <style is:global>
+  .container_general h1 {
+    background: #fad5a6;
+    background: -webkit-linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
+    background: -moz-linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
+    background: linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "aero", sans-serif;
+    margin-bottom: 50px;
+  }
+
+  .containers_generals {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80vw;
+    align-items: center;
+  }
+  .containers_one {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
   .Title {
     color: white;
     font-family: "aero";
   }
-
   .Text {
     font-size: 1.125rem;
     color: #9ca391;
     line-height: 1.75rem;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
+  }
+
+  .containers_two {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .exercise_container {
@@ -65,11 +103,11 @@ const post = await postRes.json();
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
-    margin-bottom: 80px
+
+    margin-bottom: 80px;
   }
 
-  .exercise_container h3{
+  .exercise_container h3 {
     color: white;
     font-family: sans-serif;
     margin-bottom: 20px;
@@ -79,13 +117,50 @@ const post = await postRes.json();
     width: 100%;
   }
 
+  @media (min-width: 530px) {
+    .video {
+      width: 80%;
+    }
+  }
+
   @media (min-width: 810px) {
     .exercise_container {
       width: 720px;
     }
 
     .video {
-      width: 80%;
+      width: 70%;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .containers_generals {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 900px;
+      align-items: flex-start;
+      overflow: hidden;
+      gap: 30px;
+    }
+
+    .containers_one {
+      width: 40%;
+    }
+
+    .containers_two {
+      width: 50%;
+    }
+
+    .video {
+      width: 60%;
+    }
+  }
+
+  @media (min-width: 1150px) {
+    .containers_generals {
+      width: 1090px;
+      gap: 0px;
     }
   }
 </style>

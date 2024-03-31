@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Foot from "../components/Footer.astro";
+import Faq from "../components/Faq.astro";
 
 interface Props {
   title: string;
@@ -29,6 +30,8 @@ const { title } = Astro.props;
 
     <main>
       <slot />
+
+      <Faq />
     </main>
     <Foot />
   </body>
@@ -41,7 +44,7 @@ const { title } = Astro.props;
     transition: all 0.2s;
   }
 
-  p{
+  p {
     font-family: sans-serif;
   }
 
@@ -58,6 +61,7 @@ const { title } = Astro.props;
     margin: 80px auto 0px auto;
     scrollbar-color: black blue;
     scrollbar-width: thin;
+
   }
 
   /* ------ */
