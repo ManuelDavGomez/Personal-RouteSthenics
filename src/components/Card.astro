@@ -1,0 +1,89 @@
+---
+interface Props {
+  nombre: string;
+  descripcion?: string;
+  mostrarOtroBoton: boolean;
+}
+
+const { nombre, descripcion, mostrarOtroBoton} = Astro.props;
+---
+
+<section class="card_container">
+  <h3>{nombre}</h3>
+
+  <p>
+    {descripcion}
+  </p>
+
+  {mostrarOtroBoton ? (
+    <a href="/equipacion">
+      <input type="button" value="Ver Equipamiento" class="Btn_card" />
+    </a>
+  ) : (
+    <a href="/miprogreso">
+      <input type="button" value="Ver mi Progreso" class="Btn_card" />
+    </a>
+  )}
+</section>
+
+<style>
+  .card_container {
+    width: 100%;
+    padding: 30px 30px 30px 30px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #0e1527;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%230b1224' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23080f21' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23050d1e' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23030b1a' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23020815' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23010610' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%2300040B' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .card_container h3,
+  p {
+    font-family: sans-serif;
+    color: white;
+    max-width: 1400px;
+  }
+
+  .card_container h3 {
+    padding-bottom: 20px;
+  }
+
+  .card_container p {
+    color: #9ca391;
+    font-size: 1.125rem;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  .Btn_card {
+    width: 170px;
+    margin: 30px 0px 0px 0px;
+    padding: 10px;
+    background: #01113680;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid #062f69;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    gap: 5px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+  }
+
+  .Btn_card:hover {
+    border: 1px solid #0060e6;
+    cursor: pointer;
+    background: #01288180;
+  }
+</style>

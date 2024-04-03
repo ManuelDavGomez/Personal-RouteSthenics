@@ -23,8 +23,8 @@ const ExercBasic = () => {
         <h2>Ejercicios Básicos</h2>
         <ul >
           {basics.slice(0, visible).map((basic) => (
-            <a href={`/EjerciciosBasicos/${basic._id}`}>
-              <li key={basic._id} className="exerc_item">
+            <a key={basic._id} href={`/EjerciciosBasicos/${basic._id}`}>
+              <li className="exerc_item">
                 {basic.exerciseName}
               </li>
             </a>

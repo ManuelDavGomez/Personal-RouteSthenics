@@ -2,6 +2,7 @@
 import Navbar from "../components/Navbar.astro";
 import Foot from "../components/Footer.astro";
 import Faq from "../components/Faq.astro";
+import Card from "../components/Card.astro";
 
 interface Props {
   title: string;
@@ -31,7 +32,19 @@ const { title } = Astro.props;
     <main>
       <slot />
 
+      <Card
+        nombre="La equipacion en la Calistenia"
+        descripcion="¡Descubre el secreto para esculpir tu cuerpo sin límites! ¿Estás listo para desafiar tus límites físicos y alcanzar tu mejor versión? ¡Entonces, la calistenia es tu respuesta! Haz clic ahora para sumergirte en un mundo de entrenamiento funcional, donde tu propio peso corporal se convierte en tu herramienta de transformación. Desde barras de dominadas hasta anillas, nuestro equipamiento de calistenia te llevará a nuevos niveles de fuerza, flexibilidad y definición muscular. ¡Prepárate para desatar tu potencial y alcanzar tus metas fitness de una vez por todas! ¡Haz clic y comienza tu viaje hacia un cuerpo más fuerte y ágil hoy mismo!"
+        mostrarOtroBoton={true}
+      />
+
       <Faq />
+
+      <Card
+        nombre="Mi Progreso Personal"
+        descripcion="¡Únete a mi viaje de superación personal en el mundo de la calistenia! Como creador, estoy emocionado de compartir contigo mi progreso en este apasionante viaje hacia la fuerza y la destreza física. Desde mis humildes comienzos hasta ahora, cada paso que doy representa un nuevo logro, una nueva meta alcanzada. Mi objetivo al compartir mi progreso contigo es inspirarte a ti también a embarcarte en tu propio viaje de automejora. Juntos, podemos celebrar los éxitos, superar los desafíos y motivarnos mutuamente para alcanzar nuestras metas."
+        mostrarOtroBoton={false}
+      />
     </main>
     <Foot />
   </body>
@@ -61,7 +74,6 @@ const { title } = Astro.props;
     margin: 80px auto 0px auto;
     scrollbar-color: black blue;
     scrollbar-width: thin;
-
   }
 
   /* ------ */

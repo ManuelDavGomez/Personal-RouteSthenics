@@ -4,6 +4,7 @@ import Hero from "../videos/hero.mp4";
 import Exerc from "../components/Exercise/Exerc.jsx";
 import ExercBasic from "../components/Exercise/ExercBasic.jsx";
 import Warm from "../components/Exercise/Warm.jsx";
+
 ---
 
 <Layout title="Calisthenics Roadmaps">
@@ -24,17 +25,37 @@ import Warm from "../components/Exercise/Warm.jsx";
         orientar su progreso.
       </p>
     </section>
+
     <Exerc client:idle />
+    <hr class="line1" />
+
     <Warm client:idle />
+    <hr class="line2" />
+
     <ExercBasic client:idle />
+    <hr class="line3" />
+
   </section>
+  
+
 </Layout>
 
 <style>
   :root {
     scrollbar-width: thin;
     scrollbar-color: #0084ff #272727;
+    overflow-x: hidden;
   }
+  .line1,
+  .line2,
+  .line3 {
+    border: 1px solid #1e293c;
+    width: 100vw;
+    z-index: -99;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   /* ------ */
   .principal_container {
     width: 100%;

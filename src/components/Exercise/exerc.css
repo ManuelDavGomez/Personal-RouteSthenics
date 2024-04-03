@@ -17,6 +17,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "aero", sans-serif;
+  background-color: #0060e6;
 }
 
 .exerc_container ul {
@@ -46,7 +47,7 @@
 .exerc_item:hover {
   border: 1px solid #64a5ff;
   cursor: pointer;
-  background: rgba(27, 42, 75, 0.5);
+  background: #1b2a4b80;
 }
 
 .exerc_btn {
