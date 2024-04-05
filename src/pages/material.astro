@@ -1,36 +1,43 @@
 ---
-import Hero6 from "../videos/hero6.mp4";
+import Hero4 from "../videos/hero4.mp4";
 import Layout from "../layouts/Layout.astro";
 
-const skillsRes = await fetch(`http://localhost:3000/exercisebasic`);
-const skills = await skillsRes.json();
+const materialRes = await fetch(`http://localhost:3000/material`);
+const material = await materialRes.json();
+
+function truncateText(text, maxLength) {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  return text.substring(0, maxLength) + "...";
+}
 ---
 
-<Layout title="RouteSthenics - Basicos">
+<Layout title="RouteSthenics - WarmUp">
   <section class="hero_video">
     <video autoplay muted loop id="video-bg">
-      <source src={Hero6} type="video/mp4" />
+      <source src={Hero4} type="video/mp4" />
       Tu navegador no admite la etiqueta de video.
     </video>
     <div class="overlay"></div>
   </section>
 
   <section class="container_general">
-    <h1>Ejercicios Basicos</h1>
+    <h1>Equipacion (Materiales)</h1>
 
     <section>
       <ul class="exercise_containers">
         {
-          skills.map(
-            (skill: {
+          material.map(
+            (materials: {
               _id: String;
-              exerciseName: String;
-              exerciseDesc: String;
+              materialName: String;
+              materialDesc: String;
             }) => (
-              <a href={`/EjerciciosBasicos/${skill._id}`}>
+              <a href={`/Material/${materials._id}`}>
                 <section class="exercise_items">
-                  <h4>{skill.exerciseName}</h4>
-                  <p>{skill.exerciseDesc}</p>
+                  <h4>{materials.materialName}</h4>
+                  <p>{truncateText(materials.materialDesc, 84)}</p>
                 </section>
               </a>
             )
@@ -42,7 +49,7 @@ const skills = await skillsRes.json();
 </Layout>
 
 <style>
-    :root {
+  :root {
     scrollbar-width: thin;
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
@@ -64,7 +71,7 @@ const skills = await skillsRes.json();
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: "aero", sans-serif;
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 
   .exercise_items {

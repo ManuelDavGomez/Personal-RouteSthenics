@@ -4,7 +4,7 @@ import Hero from "../videos/hero.mp4";
 import Exerc from "../components/Exercise/Exerc.jsx";
 import ExercBasic from "../components/Exercise/ExercBasic.jsx";
 import Warm from "../components/Exercise/Warm.jsx";
-
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="Calisthenics Roadmaps">
@@ -34,10 +34,13 @@ import Warm from "../components/Exercise/Warm.jsx";
 
     <ExercBasic client:idle />
     <hr class="line3" />
-
   </section>
-  
 
+  <Card
+    nombre="La equipacion en la Calistenia"
+    descripcion="¡Descubre el secreto para esculpir tu cuerpo sin límites! ¿Estás listo para desafiar tus límites físicos y alcanzar tu mejor versión? ¡Entonces, la calistenia es tu respuesta! Haz clic ahora para sumergirte en un mundo de entrenamiento funcional, donde tu propio peso corporal se convierte en tu herramienta de transformación."
+    mostrarOtroBoton={true}
+  />
 </Layout>
 
 <style>
