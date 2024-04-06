@@ -21,7 +21,7 @@ const postRes = await fetch(`http://localhost:3000/material/${id}`);
 const post = await postRes.json();
 ---
 
-<Layout title="RouteSthenics - Skills">
+<Layout title="RouteSthenics - Equipamiento">
   <section class="hero_video">
     <video autoplay muted loop id="video-bg">
       <source src={Hero3} type="video/mp4" />
@@ -43,7 +43,14 @@ const post = await postRes.json();
             post.materialURLs.map((url, index) => (
               <section class="exercise_container">
                 <h3>{post.progressionMaterial[index]}</h3>
-                <YouTube id={url} class="video" />
+                <a href={url} class="video" target="_blank">
+                <img
+                  src={post.materialImage[index]}
+                  alt=""
+                />
+              </a>
+
+
               </section>
             ))
         }
@@ -53,6 +60,13 @@ const post = await postRes.json();
 </Layout>
 
 <style is:global>
+      :root {
+    scrollbar-width: thin;
+    scrollbar-color: #0084ff #272727;
+    overflow-x: hidden;
+  }
+
+  
   .container_general h1 {
     background: #fad5a6;
     background: -webkit-linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
@@ -76,7 +90,6 @@ const post = await postRes.json();
     display: flex;
     flex-direction: column;
     align-items: center;
-
   }
 
   .Title {
@@ -111,10 +124,14 @@ const post = await postRes.json();
     color: white;
     font-family: sans-serif;
     margin-bottom: 20px;
+    text-align:center;
   }
 
   .video {
     width: 100%;
+  }
+  .video img{
+    width:100%;
   }
 
   @media (min-width: 530px) {
