@@ -35,6 +35,31 @@ const post = await postRes.json();
       <section class="containers_one">
         <h2 class="Title">{post.exerciseName}</h2>
         <p class="Text">{post.exerciseDesc}</p>
+        <h3 class="Texts"><span>Dificultad:</span> {post.skillDifficulty}</h3>
+        <h4 class="Texts"><span>Musculos Implicados:</span></h4>
+        <ul>
+          {
+            post.skillMuscles.map((skill: { skillMuscles: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
+        <h4 class="Texts"><span>Materiales:</span></h4>
+        <ul>
+          {
+            post.skillMaterials.map((skill: { skillMaterials: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
+        <h4 class="Texts"><span>Mejores Atletas:</span></h4>
+        <ul>
+          {
+            post.skillAthletes.map((skill: { skillAthletes: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
       </section>
 
       <div class="containers_two">
@@ -53,7 +78,7 @@ const post = await postRes.json();
 </Layout>
 
 <style is:global>
-      :root {
+  :root {
     scrollbar-width: thin;
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
@@ -80,8 +105,8 @@ const post = await postRes.json();
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
+    align-items: flex-start;
+    margin-bottom: 70px;
   }
 
   .Title {
@@ -93,7 +118,41 @@ const post = await postRes.json();
     color: #9ca391;
     line-height: 1.75rem;
     margin-top: 20px;
-    margin-bottom: 70px;
+    margin-bottom: 20px;
+  }
+
+  .Texts span {
+    color: white;
+  }
+
+  .Texts {
+    color: #9ca391;
+    line-height: 1.75rem;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    margin-top: 30px;
+  }
+
+  .containers_one ul {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .skillItem {
+    color: #9ca391;
+    padding: 10px;
+    background: rgba(15, 23, 42, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid #475569;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    font-family: sans-serif;
   }
 
   .containers_two {

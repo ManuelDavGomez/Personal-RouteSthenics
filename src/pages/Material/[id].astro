@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Hero3 from "../../videos/hero3.mp4";
-import { YouTube } from "astro-embed";
 
 export async function getStaticPaths() {
   const data = await fetch("http://localhost:3000/material").then((response) =>
