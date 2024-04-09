@@ -44,7 +44,7 @@ const post = await postRes.json();
             ))
           }
         </ul>
-        <h4 class="Texts"><span>Materiales:</span></h4>
+        <h4 class="Texts"><span>Materiales y Lugar de Aplicacion:</span></h4>
         <ul>
           {
             post.skillMaterials.map((skill: { skillMaterials: String }) => (
@@ -60,19 +60,36 @@ const post = await postRes.json();
             ))
           }
         </ul>
+        <h4 class="Texts"><span>Variaciones:</span></h4>
+        <ul>
+          {
+            post.skillVariations.map((skill: { skillVariations: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
       </section>
 
-      <div class="containers_two">
+      <section class="containers_two">
         {
           post.youtubeURLs &&
             post.youtubeURLs.map((url, index) => (
               <section class="exercise_container">
                 <h3>{post.progressionNames[index]}</h3>
                 <YouTube id={url} class="video" />
+                <h4
+                  class={
+                    post.skillRoute[index]
+                      ? "route-primary"
+                      : "route-alternative"
+                  }
+                >
+                  {post.skillRoute[index] ? "✔ Principal" : "✖ Alternativo"}
+                </h4>
               </section>
             ))
         }
-      </div>
+      </section>
     </article>
   </section>
 </Layout>
@@ -82,6 +99,21 @@ const post = await postRes.json();
     scrollbar-width: thin;
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
+  }
+
+  .route-alternative,
+  .route-primary {
+    font-family: sans-serif;
+    text-align: start;
+    margin-top: 20px;
+  }
+
+  .route-primary {
+    color: green;
+  }
+
+  .route-alternative {
+    color: #0084ff;
   }
   .container_general h1 {
     background: #fad5a6;
