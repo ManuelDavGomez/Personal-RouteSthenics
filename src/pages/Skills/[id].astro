@@ -35,7 +35,82 @@ const post = await postRes.json();
       <section class="containers_one">
         <h2 class="Title">{post.exerciseName}</h2>
         <p class="Text">{post.exerciseDesc}</p>
+
+        <h4 class="Texts"><span>Advertencia:</span></h4>
+        <p class="textAlt">
+          Esta guía te ayudará a avanzar en tus ejercicios. Es crucial dominar
+          las progresiones principales, ya que son fundamentales para tu
+          progreso. Los ejercicios alternativos están diseñados para brindarte
+          apoyo adicional o para practicar mientras descansas de los
+          principales. Elige las progresiones que se adapten mejor a tus
+          necesidades y solo avanza a la siguiente cuando hayas dominado la
+          anterior. Esto te ayudará a prevenir lesiones graves.
+        </p>
+
         <h3 class="Texts"><span>Dificultad:</span> {post.skillDifficulty}</h3>
+        {
+          post.skillDifficulty === "Principiante" ? (
+            <p class="Text" id="principiante">
+              Los ejercicios de calistenia en nivel principiante son aquellos
+              diseñados para individuos que están dando sus primeros pasos en
+              este tipo de entrenamiento. Incluyen movimientos básicos y
+              ejercicios fundamentales que buscan fortalecer los músculos
+              principales del cuerpo.
+            </p>
+          ) : post.skillDifficulty === "Intermedio" ? (
+            <p class="Text" id="intermedio">
+              Los ejercicios de calistenia en nivel intermedio están destinados
+              a quienes ya han adquirido cierta fuerza y control corporal a
+              través de la práctica continua. Se ven ejercicios que requieren un
+              mayor nivel de coordinación y resistencia muscular.
+            </p>
+          ) : post.skillDifficulty === "Avanzado" ? (
+            <p class="Text" id="avanzado">
+              En el nivel avanzado de calistenia, los ejercicios son
+              considerablemente más exigentes y requieren un alto grado de
+              fuerza, flexibilidad y control corporal. Entre ellos se encuentran
+              habilidades que demandan un dominio total sobre el propio peso
+              corporal y una técnica refinada.
+            </p>
+          ) : post.skillDifficulty === "Super Avanzado" ? (
+            <p class="Text" id="superAvanzado">
+              Los ejercicios de calistenia en nivel super avanzado son
+              reservados para atletas excepcionales que han alcanzado un nivel
+              sobresaliente de habilidad y condición física. Aquí se incluyen
+              movimientos extremadamente desafiantes y habilidades que requieren
+              un nivel extraordinario de fuerza y control corporal.
+            </p>
+          ) : post.skillDifficulty === "Elite" ? (
+            <p class="Text" id="elite">
+              El nivel elite de calistenia es el pináculo del rendimiento humano
+              en este ámbito. Los ejercicios en este nivel son casi
+              sobrehumanos, y solo son realizados por una élite de atletas de
+              calistenia de clase mundial. Incluyen movimientos que desafían
+              todas las expectativas físicas.
+            </p>
+          ) : post.skillDifficulty === "Inhumano" ? (
+            <p class="Text" id="inhumano">
+              Los ejercicios de calistenia en nivel inhumano son aquellos que
+              desafían los límites de lo que se considera posible para un ser
+              humano. Estos movimientos son tan extremos que solo unos pocos
+              atletas extraordinarios pueden siquiera intentarlos. Incluyen
+              ejercicios que desafían la gravedad y la comprensión misma de la
+              biomecánica humana.
+            </p>
+          ) : post.skillDifficulty === "Imposible" ? (
+            <p class="Text" id="imposible">
+              Los ejercicios de calistenia en nivel imposible son aquellos que,
+              como su nombre lo indica, se consideran fuera del alcance de
+              cualquier ser humano conocido. Estos movimientos desafían todas
+              las leyes de la física y la biología, y solo existen en la
+              imaginación más audaz. Incluyen habilidades que están más allá de
+              cualquier capacidad humana concebible y que naide ha podido si
+              quiera hacerlos perfecto.
+            </p>
+          ) : (
+            <p class="Text">Error</p>
+          )
+        }
         <h4 class="Texts"><span>Musculos Implicados:</span></h4>
         <ul>
           {
@@ -108,6 +183,36 @@ const post = await postRes.json();
     margin-top: 20px;
   }
 
+  #principiante {
+    color: green;
+  }
+  #intermedio {
+    color: #0699b6;
+  }
+  #avanzado {
+    color: #e25a14;
+  }
+  #superAvanzado {
+    color: #7700ff;
+  }
+  #elite {
+    color: #fbff00;
+  }
+  #inhumano {
+    color: #ff00f2;
+  }
+  #imposible {
+    color: #ff0000;
+  }
+
+  .textAlt {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-size: 1.125rem;
+    color: #9ca391;
+    line-height: 1.75rem;
+  }
+
   .route-primary {
     color: green;
   }
@@ -115,6 +220,7 @@ const post = await postRes.json();
   .route-alternative {
     color: #0084ff;
   }
+
   .container_general h1 {
     background: #fad5a6;
     background: -webkit-linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
@@ -150,7 +256,7 @@ const post = await postRes.json();
     color: #9ca391;
     line-height: 1.75rem;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .Texts span {
