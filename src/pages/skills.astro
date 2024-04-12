@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 const skillsRes = await fetch(`http://localhost:3000/exercise`);
 const skills = await skillsRes.json();
 
-function truncateText(text, maxLength) {
+export function truncateText(text, maxLength) {
   if (text.length <= maxLength) {
     return text;
   }

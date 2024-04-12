@@ -1,6 +1,7 @@
 ---
 import Hero4 from "../videos/hero4.mp4";
 import Layout from "../layouts/Layout.astro";
+import { truncateText } from "./skills.astro";
 
 const skillsRes = await fetch(`http://localhost:3000/warmup`);
 const skills = await skillsRes.json();
@@ -22,15 +23,11 @@ const skills = await skillsRes.json();
       <ul class="exercise_containers">
         {
           skills.map(
-            (skill: {
-              _id: String;
-              warmName: String;
-              warmDesc: String;
-            }) => (
+            (skill: { _id: String; warmName: String; warmDesc: String }) => (
               <a href={`/Calentamientos/${skill._id}`}>
                 <section class="exercise_items">
                   <h4>{skill.warmName}</h4>
-                  <p>{skill.warmDesc}</p>
+                  <p>{truncateText(skill.warmDesc, 84)}</p>
                 </section>
               </a>
             )
@@ -42,7 +39,7 @@ const skills = await skillsRes.json();
 </Layout>
 
 <style>
-    :root {
+  :root {
     scrollbar-width: thin;
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
@@ -64,7 +61,7 @@ const skills = await skillsRes.json();
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: "aero", sans-serif;
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 
   .exercise_items {

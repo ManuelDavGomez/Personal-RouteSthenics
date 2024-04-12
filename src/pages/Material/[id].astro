@@ -36,7 +36,7 @@ const post = await postRes.json();
         <p class="Text">{post.materialDesc}</p>
       </section>
 
-      <div class="containers_two">
+      <section class="containers_two">
         {
           post.materialURLs &&
             post.materialURLs.map((url, index) => (
@@ -48,14 +48,12 @@ const post = await postRes.json();
                   alt=""
                 />
               </a>
-
-
               </section>
             ))
         }
-      </div>
+      </section>
     </article>
-  </section>
+  </section>  
 </Layout>
 
 <style is:global>
@@ -64,7 +62,6 @@ const post = await postRes.json();
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
   }
-
   
   .container_general h1 {
     background: #fad5a6;
