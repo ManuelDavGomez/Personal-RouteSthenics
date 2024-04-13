@@ -35,7 +35,17 @@ const post = await postRes.json();
         <h2 class="Title">{post.warmName}</h2>
         <p class="Text">{post.warmDesc}</p>
 
-        <h4 class="Texts"><span>Materiales y Lugar de Aplicacion:</span></h4>
+        <h4 class="Texts"><span>Advertencia</span></h4>
+        <p class="Text">
+          Puedes ver los videos haciendo clic en las imágenes. Se trata de una
+          recopilación de varios canales de calistenia en inglés y español, para
+          que tengas una amplia variedad de calentamientos para tus
+          entrenamientos. No te preocupes si no entiendes el inglés, simplemente
+          realiza los calentamientos para alcanzar tu máximo potencial durante
+          el entrenamiento.
+        </p>
+
+        <h4 class="Texts"><span>Materiales</span></h4>
         <ul>
           {
             post.warmMaterials.map((warm: { warmMaterials: String }) => (
@@ -43,7 +53,17 @@ const post = await postRes.json();
             ))
           }
         </ul>
-        <a class="Texts" target="_blank" href={post.warmChannel}>{post.warmName}</a>
+        <h4 class="Texts" style={{marginBottom:"30px"}}><span>Redes Sociales</span></h4>
+        <ul>
+          {post.warmChannel && post.warmChannel.map((channel) => (
+            <li>
+              <a class="skillItem" href={channel.url}  target="_blank" rel="noopener noreferrer">
+                {channel.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        
       </section>
 
       <section class="containers_two">
@@ -117,7 +137,7 @@ const post = await postRes.json();
     line-height: 1.75rem;
     margin-bottom: 20px;
     font-family: sans-serif;
-    margin-top: 30px;
+    margin-top: 40px;
   }
 
   .containers_one ul {
@@ -140,6 +160,12 @@ const post = await postRes.json();
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     font-family: sans-serif;
+  }
+
+  .skillItem:hover{
+    background: #24386480;
+    border: 1px solid #667b97;
+    color: white;
   }
 
   .containers_two {
