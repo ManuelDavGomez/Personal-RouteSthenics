@@ -148,19 +148,17 @@ const post = await postRes.json();
       <section class="containers_two">
         {
           post.youtubeURLs &&
-            post.youtubeURLs.map((url, index) => (
+            post.youtubeURLs.map((youtubeUrl) => (
               <section class="exercise_container">
-                <h3>{post.progressionNames[index]}</h3>
-                <YouTube id={url} class="video" />
-                <h4
-                  class={
-                    post.skillRoute[index]
-                      ? "route-primary"
-                      : "route-alternative"
-                  }
-                >
-                  {post.skillRoute[index] ? "✔ Principal" : "✖ Alternativo"}
-                </h4>
+                <h3>{youtubeUrl.name}</h3>
+                <YouTube id={youtubeUrl.url} class="video" />
+                {youtubeUrl.route === "Principal" ? (
+                  <h4 class="route-primary">✔ Principal</h4>
+                ) : youtubeUrl.route === "Alternativo" ? (
+                  <h4 class="route-alternative">✖ Alternativo</h4>
+                ) : (
+                  <p class="Text">Error</p>
+                )}
               </section>
             ))
         }

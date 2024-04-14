@@ -32,37 +32,45 @@ const post = await postRes.json();
     <h1>Equipamiento: {post.materialName}</h1>
     <article class="containers_generals">
       <section class="containers_one">
-        <h2 class="Title">{post.materialName}</h2>
+        <h2 class="Title" style={{ marginBottom: "20px" }}>
+          {post.materialName}
+        </h2>
         <p class="Text">{post.materialDesc}</p>
+
+        <h4 class="Texts"><span>Advertencia</span></h4>
+        <p class="Text">
+          Estos productos están disponibles en las tiendas correspondientes. Al
+          hacer clic en la imagen, serás redirigido para realizar la compra.
+          Todo el proceso de compra se llevará a cabo en las respectivas
+          tiendas, incluyendo sus políticas y métodos de pago. Esta recopilación
+          te ofrece una amplia variedad de productos para explorar.
+        </p>
       </section>
 
       <section class="containers_two">
         {
           post.materialURLs &&
-            post.materialURLs.map((url, index) => (
+            post.materialURLs.map((materialUrl) => (
               <section class="exercise_container">
-                <h3>{post.progressionMaterial[index]}</h3>
-                <a href={url} class="video" target="_blank">
-                <img
-                  src={post.materialImage[index]}
-                  alt=""
-                />
-              </a>
+                <h3>{materialUrl.name}</h3>
+                <a href={materialUrl.url} class="video" target="_blank">
+                  <img src={materialUrl.image} alt="materiales" />
+                </a>
               </section>
             ))
         }
       </section>
     </article>
-  </section>  
+  </section>
 </Layout>
 
 <style is:global>
-      :root {
+  :root {
     scrollbar-width: thin;
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
   }
-  
+
   .container_general h1 {
     background: #fad5a6;
     background: -webkit-linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
@@ -85,7 +93,8 @@ const post = await postRes.json();
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    margin-bottom: 70px;
   }
 
   .Title {
@@ -96,8 +105,48 @@ const post = await postRes.json();
     font-size: 1.125rem;
     color: #9ca391;
     line-height: 1.75rem;
-    margin-top: 20px;
-    margin-bottom: 70px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .Texts span {
+    color: white;
+  }
+
+  .Texts {
+    color: #9ca391;
+    line-height: 1.75rem;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    margin-top: 40px;
+  }
+
+  .containers_one ul {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .skillItem {
+    color: #9ca391;
+    padding: 10px;
+    background: rgba(15, 23, 42, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid #475569;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    font-family: sans-serif;
+  }
+
+  .skillItem:hover {
+    background: #24386480;
+    border: 1px solid #667b97;
+    color: white;
   }
 
   .containers_two {
@@ -120,14 +169,13 @@ const post = await postRes.json();
     color: white;
     font-family: sans-serif;
     margin-bottom: 20px;
-    text-align:center;
   }
 
   .video {
     width: 100%;
   }
-  .video img{
-    width:100%;
+  .video img {
+    width: 100%;
   }
 
   @media (min-width: 530px) {
