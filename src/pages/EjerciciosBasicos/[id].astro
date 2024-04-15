@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Hero3 from "../../videos/hero3.mp4";
+import "../../style/general.css";
+import { YouTube } from "astro-embed";
 
 export async function getStaticPaths() {
   const data = await fetch("http://localhost:3000/exercisebasic").then(
@@ -28,9 +30,98 @@ const post = await postRes.json();
     </video>
     <div class="overlay"></div>
   </section>
-  <div class="container_general">
-    <h1>Good dog, {id}!</h1>
-    <h2>{post.exerciseName}</h2>
-    <h3>{post.exerciseDesc}</h3>
-  </div>
+  <section class="container_general">
+    <h1>Progresiones</h1>
+    <article class="containers_generals">
+      <section class="containers_one">
+        <h2 class="Title">{post.basicsName}</h2>
+        <p class="Text">{post.basicsDesc}</p>
+        <h4 class="Texts"><span>Advertencia:</span></h4>
+        <p class="textAlt">
+          Esta guía te ayudará a avanzar en tus ejercicios. Es crucial dominar
+          las progresiones principales, ya que son fundamentales para tu
+          progreso. Los ejercicios alternativos están diseñados para brindarte
+          apoyo adicional o para practicar mientras descansas de los
+          principales. Elige las progresiones que se adapten mejor a tus
+          necesidades y solo avanza a la siguiente cuando hayas dominado la
+          anterior. Esto te ayudará a prevenir lesiones graves.
+        </p>
+
+        <h3 class="Texts"><span>Dificultad:</span> {post.basicsDifficulty}</h3>
+        {
+          post.basicsDifficulty === "Principiante" ? (
+            <p class="Text" id="principiante">
+              Los ejercicios de calistenia en nivel principiante son aquellos
+              diseñados para individuos que están dando sus primeros pasos en
+              este tipo de entrenamiento. Incluyen movimientos básicos y
+              ejercicios fundamentales que buscan fortalecer los músculos
+              principales del cuerpo.
+            </p>
+          ) : post.basicsDifficulty === "Intermedio" ? (
+            <p class="Text" id="intermedio">
+              Los ejercicios de calistenia en nivel intermedio están destinados
+              a quienes ya han adquirido cierta fuerza y control corporal a
+              través de la práctica continua. Se ven ejercicios que requieren un
+              mayor nivel de coordinación y resistencia muscular.
+            </p>
+          ) : post.basicsDifficulty === "Avanzado" ? (
+            <p class="Text" id="avanzado">
+              En el nivel avanzado de calistenia, los ejercicios son
+              considerablemente más exigentes y requieren un alto grado de
+              fuerza, flexibilidad y control corporal. Entre ellos se encuentran
+              habilidades que demandan un dominio total sobre el propio peso
+              corporal y una técnica refinada.
+            </p>
+          ) : (
+            <p class="Text">Error</p>
+          )
+        }
+
+        <h4 class="Texts"><span>Musculos Implicados:</span></h4>
+        <ul>
+          {
+            post.basicsMuscles.map((skill: { basicsMuscles: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
+        <h4 class="Texts"><span>Materiales y Lugar de Aplicacion:</span></h4>
+        <ul>
+          {
+            post.basicsMaterials.map((skill: { basicsMaterials: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
+
+        <h4 class="Texts"><span>Algunas Variaciones:</span></h4>
+        <ul>
+          {
+            post.basicsVariations.map((skill: { basicsVariations: String }) => (
+              <li class="skillItem">{skill}</li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="containers_two">
+        {
+          post.basicsURLs &&
+            post.basicsURLs.map((basicsUrl) => (
+              <section class="exercise_container">
+                <h3>{basicsUrl.name}</h3>
+                <YouTube id={basicsUrl.url} class="video" />
+                {basicsUrl.route === "Principal" ? (
+                  <h4 class="route-primary">✔ Principal</h4>
+                ) : basicsUrl.route === "Alternativo" ? (
+                  <h4 class="route-alternative">✖ Alternativo</h4>
+                ) : (
+                  <p class="Text">Error</p>
+                )}
+              </section>
+            ))
+        }
+      </section>
+    </article>
+  </section>
 </Layout>

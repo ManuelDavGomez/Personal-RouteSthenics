@@ -6,11 +6,18 @@ const skillsRes = await fetch(`http://localhost:3000/exercise`);
 const skills = await skillsRes.json();
 
 export function truncateText(text, maxLength) {
+  // Verificar si text es undefined o null
+  if (text == null) {
+    return ''; // O cualquier valor predeterminado que desees devolver en caso de que text sea undefined o null
+  }
+
+  // Verificar si text.length existe antes de intentar acceder a él
   if (text.length <= maxLength) {
     return text;
   }
   return text.substring(0, maxLength) + "...";
 }
+
 ---
 
 <Layout title="RouteSthenics - Skills">

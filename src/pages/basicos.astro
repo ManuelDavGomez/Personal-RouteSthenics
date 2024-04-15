@@ -1,6 +1,7 @@
 ---
 import Hero6 from "../videos/hero6.mp4";
 import Layout from "../layouts/Layout.astro";
+import {truncateText} from "../pages/skills.astro"
 
 const skillsRes = await fetch(`http://localhost:3000/exercisebasic`);
 const skills = await skillsRes.json();
@@ -24,13 +25,13 @@ const skills = await skillsRes.json();
           skills.map(
             (skill: {
               _id: String;
-              exerciseName: String;
-              exerciseDesc: String;
+              basicsName: String;
+              basicsDesc: String;
             }) => (
               <a href={`/EjerciciosBasicos/${skill._id}`}>
                 <section class="exercise_items">
-                  <h4>{skill.exerciseName}</h4>
-                  <p>{skill.exerciseDesc}</p>
+                  <h4>{skill.basicsName}</h4>
+                  <p>{truncateText(skill.basicsDesc, 84)}</p>
                 </section>
               </a>
             )
