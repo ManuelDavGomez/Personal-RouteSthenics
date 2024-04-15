@@ -30,7 +30,15 @@ const post = await postRes.json();
     <div class="overlay"></div>
   </section>
   <section class="container_general">
-    <h1>Progresiones</h1>
+    <h1>
+      {
+        post.skillDifficulty === "Imposible" ||
+        post.skillDifficulty === "Elite" ||
+        post.skillDifficulty === "Inhumano"
+          ? "Mejores intentos"
+          : "Progresiones:"
+      }
+    </h1>
     <article class="containers_generals">
       <section class="containers_one">
         <h2 class="Title">{post.exerciseName}</h2>
@@ -38,13 +46,17 @@ const post = await postRes.json();
 
         <h4 class="Texts"><span>Advertencia:</span></h4>
         <p class="textAlt">
-          Esta guía te ayudará a avanzar en tus ejercicios. Es crucial dominar
-          las progresiones principales, ya que son fundamentales para tu
-          progreso. Los ejercicios alternativos están diseñados para brindarte
-          apoyo adicional o para practicar mientras descansas de los
-          principales. Elige las progresiones que se adapten mejor a tus
-          necesidades y solo avanza a la siguiente cuando hayas dominado la
-          anterior. Esto te ayudará a prevenir lesiones graves.
+          <span>
+            En el caso que el ejercicio sea imposible o directamente muy pocos
+            lo han podido hacer te recomiendo que no lo intentes, queda bajo tu
+            responsabilidad.</span
+          >
+          Esta guía te ayudará a avanzar en tus ejercicios. Es crucial dominar las
+          progresiones principales, ya que son fundamentales para tu progreso. Los
+          ejercicios alternativos están diseñados para brindarte apoyo adicional
+          o para practicar mientras descansas de los principales. Elige las progresiones
+          que se adapten mejor a tus necesidades y solo avanza a la siguiente cuando
+          hayas dominado la anterior. Esto te ayudará a prevenir lesiones graves.
         </p>
 
         <h3 class="Texts"><span>Dificultad:</span> {post.skillDifficulty}</h3>
@@ -127,7 +139,17 @@ const post = await postRes.json();
             ))
           }
         </ul>
-        <h4 class="Texts"><span>Mejores Atletas:</span></h4>
+        <h4 class="Texts">
+          <span
+            >{
+              post.skillDifficulty === "Imposible" ||
+              post.skillDifficulty === "Elite" ||
+              post.skillDifficulty === "Inhumano"
+                ? "Atletas que lo han intentado:"
+                : "Mejores Atletas:"
+            }</span
+          >
+        </h4>
         <ul>
           {
             post.skillAthletes.map((skill: { skillAthletes: String }) => (
@@ -135,7 +157,8 @@ const post = await postRes.json();
             ))
           }
         </ul>
-        <h4 class="Texts"><span>Variaciones:</span></h4>
+
+        <h4 class="Texts"><span>Algunas Variaciones:</span></h4>
         <ul>
           {
             post.skillVariations.map((skill: { skillVariations: String }) => (
@@ -156,6 +179,8 @@ const post = await postRes.json();
                   <h4 class="route-primary">✔ Principal</h4>
                 ) : youtubeUrl.route === "Alternativo" ? (
                   <h4 class="route-alternative">✖ Alternativo</h4>
+                ) : youtubeUrl.route === "Imposible" ? (
+                  <h4 class="route-imposible">☠ Imposible</h4>
                 ) : (
                   <p class="Text">Error</p>
                 )}
@@ -175,7 +200,8 @@ const post = await postRes.json();
   }
 
   .route-alternative,
-  .route-primary {
+  .route-primary,
+  .route-imposible {
     font-family: sans-serif;
     text-align: start;
     margin-top: 20px;
@@ -211,12 +237,20 @@ const post = await postRes.json();
     line-height: 1.75rem;
   }
 
+  .textAlt span {
+    color: rgb(145, 0, 0);
+  }
+
   .route-primary {
     color: green;
   }
 
   .route-alternative {
     color: #0084ff;
+  }
+
+  .route-imposible {
+    color: red;
   }
 
   .container_general h1 {
