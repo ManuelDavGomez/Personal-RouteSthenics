@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../videos/hero.mp4";
-import Exerc from "../components/Exercise/Exerc.jsx";
+import Exercise from "../components/Exercise/Exerc.jsx";
 import ExercBasic from "../components/Exercise/ExercBasic.jsx";
-import Warm from "../components/Exercise/Warm.jsx";
+import Warm from "../components/Exercise/Warm";
 import Card from "../components/Card.astro";
 ---
 
@@ -26,14 +26,13 @@ import Card from "../components/Card.astro";
       </p>
     </section>
 
-    <Exerc client:idle />
-    <hr class="line1" />
+    <Exercise client:idle />
+
 
     <Warm client:idle />
-    <hr class="line2" />
 
     <ExercBasic client:idle />
-    <hr class="line3" />
+
   </section>
 
   <Card

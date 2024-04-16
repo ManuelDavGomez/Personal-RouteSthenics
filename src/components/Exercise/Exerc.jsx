@@ -4,7 +4,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const ExercBasic = () => {
   const [basics, setBasics] = useState([]);
-  const [visible, setVisible] = useState(15); // Estado para controlar la cantidad de elementos visibles
+  const [visible, setVisible] = useState(15);
 
   useEffect(() => {
     fetch("http://localhost:3000/exercise")
@@ -20,11 +20,11 @@ const ExercBasic = () => {
   return (
     <>
       <section className="exerc_container">
-        <h2>Habilidades (Skills)</h2>
-        <ul>
+        <h2>Ejercicios Básicos</h2>
+        <ul >
           {basics.slice(0, visible).map((basic) => (
-            <a key={basic._id} href={`Skills/${basic._id}`}>
-              <li  className="exerc_item">
+            <a key={basic._id} href={`/EjerciciosBasicos/${basic._id}`}>
+              <li className="exerc_item">
                 {basic.exerciseName}
               </li>
             </a>
