@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import "./exerc.css";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
-const ExercBasic = () => {
-  const [skills, setSkills] = useState([]);
-  const [visible, setVisible] = useState(15);
+const Flexibility = () => {
+  const [flexs, setFlexs] = useState([]);
+  const [visible, setVisible] = useState(15); // Estado para controlar la cantidad de elementos visibles
 
   useEffect(() => {
-    fetch("http://localhost:3000/exercise")
+    fetch("http://localhost:3000/flexibility")
       .then((res) => res.json())
-      .then((data) => setSkills(data))
+      .then((data) => setFlexs(data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -18,19 +18,17 @@ const ExercBasic = () => {
   };
 
   return (
-    <> 
+    <>
       <section className="exerc_container">
-        <h2>Habilidades (Skills)</h2>
-        <ul >
-          {skills.slice(0, visible).map((skill) => (
-            <a key={skill._id} href={`/Skills/${skill._id}`}>
-              <li className="exerc_item">
-                {skill.exerciseName}
-              </li>
+        <h2>Flexibilidad</h2>
+        <ul>
+          {flexs.slice(0, visible).map((flex) => (
+            <a key={flex._id} href={`/Flexibilidad/${flex._id}`}>
+              <li className="exerc_item">{flex.flexName}</li>
             </a>
           ))}
         </ul>
-        {visible < skills.length && (
+        {visible < flexs.length && (
           <button onClick={showMoreItems} className="exerc_btn">
             Ver más <MdOutlineKeyboardDoubleArrowRight />
           </button>
@@ -40,4 +38,4 @@ const ExercBasic = () => {
   );
 };
 
-export default ExercBasic;
+export default Flexibility;

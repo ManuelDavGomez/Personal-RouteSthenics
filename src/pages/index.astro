@@ -3,8 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../videos/hero.mp4";
 import Exercise from "../components/Exercise/Exerc.jsx";
 import ExercBasic from "../components/Exercise/ExercBasic.jsx";
+import Material from "../components/Exercise/Material.jsx";
 import Warm from "../components/Exercise/Warm";
-import Card from "../components/Card.astro";
+import Flexibility from "../components/Exercise/Flexibility.jsx";
 ---
 
 <Layout title="Calisthenics Roadmaps">
@@ -28,18 +29,16 @@ import Card from "../components/Card.astro";
 
     <Exercise client:idle />
 
-
+    <hr class="line" />
     <Warm client:idle />
-
+    <hr class="line" />
+    <Flexibility client:idle />
+    <hr class="line" />
     <ExercBasic client:idle />
-
+    <hr class="line" />
+    <Material client:idle />
+    <hr class="line" />
   </section>
-
-  <Card
-    nombre="La equipacion en la Calistenia"
-    descripcion="¡Descubre el secreto para esculpir tu cuerpo sin límites! ¿Estás listo para desafiar tus límites físicos y alcanzar tu mejor versión? ¡Entonces, la calistenia es tu respuesta! Haz clic ahora para sumergirte en un mundo de entrenamiento funcional, donde tu propio peso corporal se convierte en tu herramienta de transformación."
-    mostrarOtroBoton={true}
-  />
 </Layout>
 
 <style>
@@ -48,9 +47,7 @@ import Card from "../components/Card.astro";
     scrollbar-color: #0084ff #272727;
     overflow-x: hidden;
   }
-  .line1,
-  .line2,
-  .line3 {
+  .line {
     border: 1px solid #1e293c;
     width: 100vw;
     z-index: -99;

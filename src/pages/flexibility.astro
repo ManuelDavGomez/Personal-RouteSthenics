@@ -1,0 +1,100 @@
+---
+import Hero4 from "../videos/hero4.mp4";
+import Layout from "../layouts/Layout.astro";
+import { truncateText } from "./skills.astro";
+
+const skillsRes = await fetch(`http://localhost:3000/flexibility`);
+const skills = await skillsRes.json();
+---
+
+<Layout title="RouteSthenics - Flexibilidad">
+  <section class="hero_video">
+    <video autoplay muted loop id="video-bg">
+      <source src={Hero4} type="video/mp4" />
+      Tu navegador no admite la etiqueta de video.
+    </video>
+    <div class="overlay"></div>
+  </section>
+
+  <section class="container_general">
+    <h1>Flexibilidad</h1>
+
+    <section>
+      <ul class="exercise_containers">
+        {
+          skills.map(
+            (skill: { _id: String; flexName: String; flexDesc: String }) => (
+              <a href={`/Flexibilidad/${skill._id}`}>
+                <section class="exercise_items">
+                  <h4>{skill.flexName}</h4>
+                  <p>{truncateText(skill.flexDesc, 84)}</p>
+                </section>
+              </a>
+            )
+          )
+        }
+      </ul>
+    </section>
+  </section>
+</Layout>
+
+<style>
+  :root {
+    scrollbar-width: thin;
+    scrollbar-color: #0084ff #272727;
+    overflow-x: hidden;
+  }
+  .exercise_containers {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .container_general h1 {
+    background: #1f639c;
+    background: -webkit-linear-gradient(to left, #1f639c 0%, #b2a2a3 100%);
+    background: -moz-linear-gradient(to left, #1f639c 0%, #b2a2a3 100%);
+    background: linear-gradient(to left, #1f639c 0%, #b2a2a3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "aero", sans-serif;
+    margin-bottom: 10px;
+  }
+
+  .exercise_items {
+    padding: 20px;
+    border-radius: 10px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    background: rgba(28, 46, 68, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(28, 46, 68, 0.25);
+  }
+
+  .exercise_items:hover {
+    background: #273f5c80;
+  }
+
+  .exercise_items h4 {
+    color: #0077c0;
+    margin-bottom: 10px;
+  }
+
+  .exercise_items p {
+    color: #9ca391;
+    margin-bottom: 5px;
+  }
+
+  @media (min-width: 430px) {
+    .exercise_containers {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
