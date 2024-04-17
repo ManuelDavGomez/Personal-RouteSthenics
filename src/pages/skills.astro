@@ -1,6 +1,7 @@
 ---
 import Hero5 from "../videos/hero5.mp4";
 import Layout from "../layouts/Layout.astro";
+import HeroVideo from "../components/Hero_video.astro";
 
 const skillsRes = await fetch(`http://localhost:3000/exercise`);
 const skills = await skillsRes.json();
@@ -21,13 +22,7 @@ export function truncateText(text, maxLength) {
 ---
 
 <Layout title="RouteSthenics - Skills">
-  <section class="hero_video">
-    <video autoplay muted loop id="video-bg">
-      <source src={Hero5} type="video/mp4" />
-      Tu navegador no admite la etiqueta de video.
-    </video>
-    <div class="overlay"></div>
-  </section>
+  <HeroVideo video={Hero5}/>
 
   <section class="container_general">
     <h1>Habilidades (Skills)</h1>

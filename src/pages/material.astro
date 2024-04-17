@@ -1,6 +1,7 @@
 ---
 import Hero7 from "../videos/hero7.mp4";
 import Layout from "../layouts/Layout.astro";
+import HeroVideo from "../components/Hero_video.astro";
 
 const materialRes = await fetch(`http://localhost:3000/material`);
 const material = await materialRes.json();
@@ -14,13 +15,7 @@ function truncateText(text, maxLength) {
 ---
 
 <Layout title="RouteSthenics - Equipamiento">
-  <section class="hero_video">
-    <video autoplay muted loop id="video-bg">
-      <source src={Hero7} type="video/mp4" />
-      Tu navegador no admite la etiqueta de video.
-    </video>
-    <div class="overlay"></div>
-  </section>
+  <HeroVideo video={Hero7}/>
 
   <section class="container_general">
     <h1>Equipacion (Materiales)</h1>

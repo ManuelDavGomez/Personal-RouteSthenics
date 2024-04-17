@@ -5,88 +5,80 @@ import Maltese from "../img/maltese.jpg";
 import IronCross from "../img/ironCross.avif";
 import Skills from "../img/skills.avif";
 import Image from "astro/components/Image.astro";
+import HeroVideo from "../components/Hero_video.astro";
 ---
 
 <Layout title="RouteSthenics - Historia">
-    <section class="hero_video">
-      <video autoplay muted loop id="video-bg">
-        <source src={Hero2} type="video/mp4" />
-        Tu navegador no admite la etiqueta de video.
-      </video>
-      <div class="overlay"></div>
-    </section>
-    <section class="container_general">
-      <h1>la Calistenia y su Historia</h1>
+  <HeroVideo video={Hero2} />
+  <section class="container_general">
+    <h1>la Calistenia y su Historia</h1>
 
-      <p>
-        La calistenia, también conocida como entrenamiento con el peso corporal,
-        es un método de ejercicio que se remonta a la antigua Grecia. Su nombre
-        proviene del griego "kalos", que significa "belleza", y "sthenos", que
-        significa "fortaleza". Así, calistenia literalmente se traduce como
-        "belleza y fuerza".
-      </p>
+    <p>
+      La calistenia, también conocida como entrenamiento con el peso corporal,
+      es un método de ejercicio que se remonta a la antigua Grecia. Su nombre
+      proviene del griego "kalos", que significa "belleza", y "sthenos", que
+      significa "fortaleza". Así, calistenia literalmente se traduce como
+      "belleza y fuerza".
+    </p>
 
-      <section class="img_container">
-        <Image src={Maltese} alt="Maltese planche" />
-      </section>
-
-      <p>
-        Históricamente, la calistenia se ha utilizado en diferentes culturas
-        como parte de programas de entrenamiento militar y de atletismo. En la
-        antigua Grecia, por ejemplo, los soldados practicaban ejercicios de
-        calistenia para mantenerse en forma y estar listos para la batalla.
-        Estos ejercicios incluían flexiones, dominadas, saltos y otros
-        movimientos que no requerían equipo adicional.
-      </p>
-
-      <p>
-        Durante el siglo XIX, la calistenia ganó popularidad en Europa y América
-        del Norte como una forma de ejercicio físico para la salud y la aptitud
-        general. A finales del siglo XIX y principios del XX, se desarrollaron
-        varios sistemas de ejercicios de calistenia, como el método de
-        ejercicios suecos y el método de ejercicios naturales.
-      </p>
-
-      <section class="img_container">
-        <Image src={Skills} alt="Maltese planche" />
-      </section>
-
-      <p>
-        En la década de 20 del siglo pasado, la calistenia fue eclipsada en
-        cierta medida por el auge de los gimnasios y el culturismo. Sin embargo,
-        en las últimas décadas, ha habido un resurgimiento de interés en la
-        calistenia debido a su accesibilidad, eficacia y la facilidad con la que
-        se puede practicar en cualquier lugar sin necesidad de equipo
-        especializado.
-      </p>
-
-      <section class="img_container">
-        <Image src={IronCross} alt="Maltese planche" />
-      </section>
-
-      <p>
-        Hoy en día, la calistenia es practicada por personas de todas las edades
-        y niveles de condición física. Se ha convertido en un componente
-        importante de programas de entrenamiento funcional y de fuerza, y ha
-        ganado popularidad en comunidades de fitness en línea y en redes
-        sociales. Los practicantes de calistenia suelen utilizar su propio peso
-        corporal como resistencia, combinando ejercicios como flexiones,
-        dominadas, fondos, planchas y saltos para desarrollar fuerza,
-        resistencia y flexibilidad. Además, la calistenia se ha convertido en un
-        deporte competitivo con torneos y competiciones que celebran la
-        habilidad y la destreza física de sus participantes.
-      </p>
+    <section class="img_container">
+      <Image src={Maltese} alt="Maltese planche" />
     </section>
 
+    <p>
+      Históricamente, la calistenia se ha utilizado en diferentes culturas como
+      parte de programas de entrenamiento militar y de atletismo. En la antigua
+      Grecia, por ejemplo, los soldados practicaban ejercicios de calistenia
+      para mantenerse en forma y estar listos para la batalla. Estos ejercicios
+      incluían flexiones, dominadas, saltos y otros movimientos que no requerían
+      equipo adicional.
+    </p>
+
+    <p>
+      Durante el siglo XIX, la calistenia ganó popularidad en Europa y América
+      del Norte como una forma de ejercicio físico para la salud y la aptitud
+      general. A finales del siglo XIX y principios del XX, se desarrollaron
+      varios sistemas de ejercicios de calistenia, como el método de ejercicios
+      suecos y el método de ejercicios naturales.
+    </p>
+
+    <section class="img_container">
+      <Image src={Skills} alt="Maltese planche" />
+    </section>
+
+    <p>
+      En la década de 20 del siglo pasado, la calistenia fue eclipsada en cierta
+      medida por el auge de los gimnasios y el culturismo. Sin embargo, en las
+      últimas décadas, ha habido un resurgimiento de interés en la calistenia
+      debido a su accesibilidad, eficacia y la facilidad con la que se puede
+      practicar en cualquier lugar sin necesidad de equipo especializado.
+    </p>
+
+    <section class="img_container">
+      <Image src={IronCross} alt="Maltese planche" />
+    </section>
+
+    <p>
+      Hoy en día, la calistenia es practicada por personas de todas las edades y
+      niveles de condición física. Se ha convertido en un componente importante
+      de programas de entrenamiento funcional y de fuerza, y ha ganado
+      popularidad en comunidades de fitness en línea y en redes sociales. Los
+      practicantes de calistenia suelen utilizar su propio peso corporal como
+      resistencia, combinando ejercicios como flexiones, dominadas, fondos,
+      planchas y saltos para desarrollar fuerza, resistencia y flexibilidad.
+      Además, la calistenia se ha convertido en un deporte competitivo con
+      torneos y competiciones que celebran la habilidad y la destreza física de
+      sus participantes.
+    </p>
+  </section>
 
   <style>
+    :root {
+      scrollbar-width: thin;
+      scrollbar-color: #0084ff #272727;
+      overflow-x: hidden;
+    }
 
-:root {
-    scrollbar-width: thin;
-    scrollbar-color: #0084ff #272727;
-    overflow-x: hidden;
-  }
-  
     .container_general h1 {
       padding-bottom: 30px;
       text-align: center;

@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Hero3 from "../../videos/hero3.mp4";
-import "../../style/general.css"
+import Hero13 from "../../videos/hero13.mp4";
+import "../../style/general.css";
+import HeroVideo from "../../components/Hero_video.astro";
 
 export async function getStaticPaths() {
   const data = await fetch("http://localhost:3000/warmup").then((response) =>
@@ -22,13 +23,7 @@ const post = await postRes.json();
 ---
 
 <Layout title="RoutheSthenics - WarmUp">
-  <section class="hero_video">
-    <video autoplay muted loop id="video-bg">
-      <source src={Hero3} type="video/mp4" />
-      Tu navegador no admite la etiqueta de video.
-    </video>
-    <div class="overlay"></div>
-  </section>
+  <HeroVideo video={Hero13} />
   <section class="container_general">
     <h1>Warm Up</h1>
     <article class="containers_generals">

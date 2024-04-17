@@ -6,16 +6,12 @@ import ExercBasic from "../components/Exercise/ExercBasic.jsx";
 import Material from "../components/Exercise/Material.jsx";
 import Warm from "../components/Exercise/Warm";
 import Flexibility from "../components/Exercise/Flexibility.jsx";
+import HeroVideo from "../components/Hero_video.astro";
 ---
 
 <Layout title="Calisthenics Roadmaps">
-  <section class="hero_video">
-    <video autoplay muted loop id="video-bg">
-      <source src={Hero} type="video/mp4" />
-      Tu navegador no admite la etiqueta de video.
-    </video>
-    <div class="overlay"></div>
-  </section>
+  <HeroVideo video={Hero} />
+
   <section class="container_general">
     <section class="hero_home">
       <h1>Roadmaps para calistenicos</h1>
