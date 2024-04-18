@@ -130,6 +130,10 @@
   font-family: sans-serif;
 }
 
+.skillItem a{
+  margin-bottom: 60px;
+}
+
 .skillItem:hover {
   background: #24386480;
   border: 1px solid #667b97;

@@ -1,0 +1,74 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero13 from "../../videos/hero13.mp4";
+import "../../style/general.css";
+import HeroVideo from "../../components/Hero_video.astro";
+
+export async function getStaticPaths() {
+  const data = await fetch("http://localhost:3000/electronica").then(
+    (response) => response.json()
+  );
+
+  return data.map((post: { _id: String }) => {
+    return {
+      params: { id: post._id },
+    };
+  });
+}
+
+const { id } = Astro.params;
+
+const postRes = await fetch(`http://localhost:3000/electronica/${id}`);
+const post = await postRes.json();
+---
+
+<Layout title="RoutheSthenics - Electronica">
+  <HeroVideo video={Hero13} />
+  <section class="container_general">
+    <h1>Musica Electronica</h1>
+    <article class="containers_generals">
+      <section class="containers_one">
+        <h2 class="Title">{post.electroName}</h2>
+        <p class="Text">{post.electroDesc}</p>
+
+        <h4 class="Texts"><span>Advertencia</span></h4>
+        <p class="Text">
+          Aquí tienes una selección de canciones especialmente elegidas para
+          acompañar tus entrenamientos. Son mis favoritas, y aunque todos
+          tenemos gustos diferentes, estoy seguro de que algunas te gustarán. Si
+          haces clic en la imagen, te llevará directamente al video de la
+          canción. ¡Espero que estas canciones te den la energía extra que
+          necesitas para entrenar con determinación y alcanzar tus metas!
+        </p>
+
+        <h4 class="Texts" style={{ marginBottom: "30px" }}>
+          <span>Redes Sociales</span>
+        </h4>
+        <ul>
+          {
+            post.electroChannel &&
+              post.electroChannel.map((channel) => (
+                <a href={channel.url} target="_blank" rel="noopener noreferrer">
+                  <li class="skillItem">{channel.name}</li>
+                </a>
+              ))
+          }
+        </ul>
+      </section>
+
+      <section class="containers_two">
+        {
+          post.electroURLs &&
+            post.electroURLs.map((electroUrl) => (
+              <section class="exercise_container">
+                <h3>{electroUrl.name}</h3>
+                <a href={electroUrl.url} class="video" target="_blank">
+                  <img src={electroUrl.image} alt="Miniatura del video" />
+                </a>
+              </section>
+            ))
+        }
+      </section>
+    </article>
+  </section>
+</Layout>

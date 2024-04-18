@@ -56,16 +56,9 @@ const post = await postRes.json();
           {
             post.flexChannel &&
               post.flexChannel.map((channel) => (
-                <li>
-                  <a
-                    class="skillItem"
-                    href={channel.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {channel.name}
-                  </a>
-                </li>
+                <a href={channel.url} target="_blank" rel="noopener noreferrer">
+                  <li class="skillItem">{channel.name}</li>
+                </a>
               ))
           }
         </ul>

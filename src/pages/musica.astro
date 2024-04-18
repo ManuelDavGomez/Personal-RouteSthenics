@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../videos/hero.mp4";
+import HeroVideo from "../components/Hero_video.astro";
+import Electronica from "../components/Exercise/Electronica.jsx";
+import Rock from "../components/Exercise/Rock.jsx";
+---
+
+<Layout title="Calisthenics Roadmaps">
+  <HeroVideo video={Hero} />
+
+  <section class="container_general">
+    <section class="hero_home">
+      <h1>Musica para entrenar</h1>
+    </section>
+
+    <Electronica client:idle />
+    <hr class="line" /> 
+    <Rock client:idle />
+    <hr class="line" />
+  </section>
+</Layout>
+
+<style>
+  :root {
+    scrollbar-width: thin;
+    scrollbar-color: #0084ff #272727;
+    overflow-x: hidden;
+  }
+  .line {
+    border: 1px solid #1e293c;
+    width: 100vw;
+    z-index: -99;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
