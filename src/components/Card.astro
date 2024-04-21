@@ -2,10 +2,9 @@
 interface Props {
   nombre: string;
   descripcion?: string;
-  mostrarOtroBoton: boolean;
 }
 
-const { nombre, descripcion, mostrarOtroBoton} = Astro.props;
+const { nombre, descripcion } = Astro.props;
 ---
 
 <section class="card_container">
@@ -15,15 +14,9 @@ const { nombre, descripcion, mostrarOtroBoton} = Astro.props;
     {descripcion}
   </p>
 
-  {mostrarOtroBoton ? (
-    <a href="/material">
-      <input type="button" value="Ver Equipamiento" class="Btn_card" />
-    </a>
-  ) : (
-    <a href="/miprogreso">
-      <input type="button" value="Ver mi Progreso" class="Btn_card" />
-    </a>
-  )}
+  <a href="/musica">
+    <input type="button" value="Ver Musica" class="Btn_card" />
+  </a>
 </section>
 
 <style>
@@ -46,7 +39,7 @@ const { nombre, descripcion, mostrarOtroBoton} = Astro.props;
   .card_container h3,
   p {
     font-family: sans-serif;
-    color: #0782C2;
+    color: #0782c2;
     max-width: 1400px;
   }
 

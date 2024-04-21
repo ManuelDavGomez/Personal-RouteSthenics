@@ -7,6 +7,7 @@ import Material from "../components/Exercise/Material.jsx";
 import Warm from "../components/Exercise/Warm";
 import Flexibility from "../components/Exercise/Flexibility.jsx";
 import HeroVideo from "../components/Hero_video.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="Calisthenics Roadmaps">
@@ -34,7 +35,13 @@ import HeroVideo from "../components/Hero_video.astro";
     <hr class="line" />
     <Material client:idle />
     <hr class="line" />
+
+
   </section>
+  <Card
+  nombre="Mi playlist musical"
+  descripcion="Aquí te presento una selección de mis canciones favoritas para acompañar tus entrenamientos. Creo que estas melodías te infundirán la energía y motivación necesarias para alcanzar tus metas fitness. Espero que disfrutes de la variedad de estilos musicales que he elegido y que te impulsen a dar lo mejor de ti en cada sesión de ejercicio."
+/>
 </Layout>
 
 <style>
