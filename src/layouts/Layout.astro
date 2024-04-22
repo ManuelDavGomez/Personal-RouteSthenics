@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar.astro";
 import Foot from "../components/Footer.astro";
 import Faq from "../components/Faq.astro";
 
-
 interface Props {
   title: string;
 }
@@ -17,11 +16,19 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Descubre tu camino hacia la excelencia física con nuestra página de inicio sobre rutas de aprendizaje de ejercicios de calistenia. Encuentra la guía perfecta para alcanzar tus objetivos y dominar la calistenia."
+      content="Descubre tu camino hacia la excelencia física con nuestra página de inicio sobre rutas de aprendizaje de ejercicios de calistenia."
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="43200" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="calisthenics,calisthenics workout, calisthenics workout plan, calisthenics for beginners, calistenia, entrenamientos, rutas de aprendizaje, progresiones, full planche, front lever, back lever, calisthenics exercises, routesthenics, routesthenics pagina"
+    />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <title>{title}</title>
   </head>
   <body>
@@ -33,8 +40,6 @@ const { title } = Astro.props;
       <slot />
 
       <Faq />
-
-   
     </main>
     <Foot />
   </body>
@@ -51,8 +56,6 @@ const { title } = Astro.props;
     font-family: sans-serif;
   }
 
-  /* xd */
-
   .container_general {
     display: flex;
     align-items: center;
@@ -65,8 +68,6 @@ const { title } = Astro.props;
     scrollbar-color: black blue;
     scrollbar-width: thin;
   }
-
-  /* ------ */
   .hero_video {
     position: relative;
     width: 100%;
