@@ -8,7 +8,7 @@ const { nombre, descripcion } = Astro.props;
 ---
 
 <section class="card_container">
-  <h3>{nombre}</h3>
+  <h2>{nombre}</h2>
 
   <p>
     {descripcion}
@@ -36,14 +36,14 @@ const { nombre, descripcion } = Astro.props;
     background-repeat: no-repeat;
   }
 
-  .card_container h3,
+  .card_container h2,
   p {
     font-family: sans-serif;
     color: #0782c2;
     max-width: 1400px;
   }
 
-  .card_container h3 {
+  .card_container h2 {
     padding-bottom: 20px;
   }
 

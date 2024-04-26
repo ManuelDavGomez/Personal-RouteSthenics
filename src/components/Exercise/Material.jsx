@@ -4,7 +4,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const Material = () => {
   const [materials, setMaterials] = useState([]);
-  const [visible, setVisible] = useState(15); // Estado para controlar la cantidad de elementos visibles
+  const [visible, setVisible] = useState(10); // Estado para controlar la cantidad de elementos visibles
 
   useEffect(() => {
     fetch("http://localhost:3000/material")
@@ -14,7 +14,7 @@ const Material = () => {
   }, []);
 
   const showMoreItems = () => {
-    setVisible((prevValue) => prevValue + 15);
+    setVisible((prevValue) => prevValue + 10);
   };
 
   return (

@@ -4,7 +4,7 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const ExercBasic = () => {
   const [skills, setSkills] = useState([]);
-  const [visible, setVisible] = useState(15);
+  const [visible, setVisible] = useState(10);
 
   useEffect(() => {
     fetch("http://localhost:3000/exercise")
@@ -14,7 +14,7 @@ const ExercBasic = () => {
   }, []);
 
   const showMoreItems = () => {
-    setVisible((prevValue) => prevValue + 15);
+    setVisible((prevValue) => prevValue + 10);
   };
 
   return (

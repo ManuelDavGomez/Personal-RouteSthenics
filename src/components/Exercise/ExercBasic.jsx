@@ -4,17 +4,17 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const ExercBasic = () => {
   const [basics, setBasics] = useState([]);
-  const [visible, setVisible] = useState(15);
+  const [visible, setVisible] = useState(10);
 
   useEffect(() => {
     fetch("http://localhost:3000/exercisebasic")
       .then((res) => res.json())
       .then((data) => setBasics(data))
       .catch((err) => console.log(err));
-  }, []);
+  }, []); 
 
   const showMoreItems = () => {
-    setVisible((prevValue) => prevValue + 15);
+    setVisible((prevValue) => prevValue + 10);
   };
 
   return (
