@@ -25,6 +25,7 @@
   gap: 10px;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .exerc_container ul li {
   font-family: sans-serif;
