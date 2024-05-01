@@ -4,12 +4,16 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const Warm = () => {
   const [warms, setWarms] = useState([]);
-  const [visible, setVisible] = useState(10); // Estado para controlar la cantidad de elementos visibles
+  const [visible, setVisible] = useState(10);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/warmup")
       .then((res) => res.json())
-      .then((data) => setWarms(data))
+      .then((data) => {
+        setWarms(data);
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -21,13 +25,17 @@ const Warm = () => {
     <>
       <section className="exerc_container">
         <h2>Calentamientos</h2>
-        <ul>
-          {warms.slice(0, visible).map((warm) => (
-            <a key={warm._id} href={`/Calentamientos/${warm._id}`}>
-              <li className="exerc_item">{warm.warmName}</li>
-            </a>
-          ))}
-        </ul>
+        {loading ? (
+          <div className="spinner"></div>
+        ) : (
+          <ul>
+            {warms.slice(0, visible).map((warm) => (
+              <a key={warm._id} href={`/Calentamientos/${warm._id}`}>
+                <li className="exerc_item">{warm.warmName}</li>
+              </a>
+            ))}
+          </ul>
+        )}
         {visible < warms.length && (
           <button onClick={showMoreItems} className="exerc_btn">
             Ver más <MdOutlineKeyboardDoubleArrowRight />

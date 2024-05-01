@@ -67,6 +67,7 @@
   -webkit-text-fill-color: transparent;
   font-family: "aero", sans-serif;
   margin-bottom: 50px;
+  text-align: center;
 }
 
 .containers_generals {
@@ -130,7 +131,7 @@
   font-family: sans-serif;
 }
 
-.skillItem a{
+.skillItem a {
   margin-bottom: 60px;
 }
 
@@ -139,7 +140,6 @@
   border: 1px solid #667b97;
   color: white;
 }
-
 
 .containers_two {
   width: 100%;

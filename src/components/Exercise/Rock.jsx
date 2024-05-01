@@ -4,12 +4,16 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const Rock = () => {
   const [rocks, setRocks] = useState([]);
-  const [visible, setVisible] = useState(10); // Estado para controlar la cantidad de elementos visibles
+  const [visible, setVisible] = useState(10);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/rock")
       .then((res) => res.json())
-      .then((data) => setRocks(data))
+      .then((data) => {
+        setRocks(data);
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -18,16 +22,20 @@ const Rock = () => {
   };
 
   return (
-    <> 
+    <>
       <section className="exerc_container">
         <h2>Genero de Rock</h2>
-        <ul>
-          {rocks.slice(0, visible).map((rock) => (
-            <a key={rock._id} href={`/Rock/${rock._id}`}>
-              <li className="exerc_item">{rock.rockName}</li>
-            </a>
-          ))}
-        </ul>
+        {loading ? (
+          <div className="spinner"></div>
+        ) : (
+          <ul>
+            {rocks.slice(0, visible).map((rock) => (
+              <a key={rock._id} href={`/Rock/${rock._id}`}>
+                <li className="exerc_item">{rock.rockName}</li>
+              </a>
+            ))}
+          </ul>
+        )}
         {visible < rocks.length && (
           <button onClick={showMoreItems} className="exerc_btn">
             Ver más <MdOutlineKeyboardDoubleArrowRight />

@@ -4,12 +4,16 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 
 const Electronica = () => {
   const [electros, setElectros] = useState([]);
-  const [visible, setVisible] = useState(15); // Estado para controlar la cantidad de elementos visibles
+  const [visible, setVisible] = useState(15); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/electronica")
       .then((res) => res.json())
-      .then((data) => setElectros(data))
+      .then((data) => {
+        setElectros(data);
+        setLoading(false); 
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -21,6 +25,9 @@ const Electronica = () => {
     <>
       <section className="exerc_container">
         <h2>Genero de la Electronica</h2>
+        {loading ? ( 
+          <div className="spinner"></div>
+        ) : (
         <ul>
           {electros.slice(0, visible).map((electro) => (
             <a key={electro._id} href={`/Electronica/${electro._id}`}>
@@ -28,6 +35,7 @@ const Electronica = () => {
             </a>
           ))}
         </ul>
+        )}
         {visible < electros.length && (
           <button onClick={showMoreItems} className="exerc_btn">
             Ver más <MdOutlineKeyboardDoubleArrowRight />
