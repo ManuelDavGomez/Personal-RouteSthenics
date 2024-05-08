@@ -24,7 +24,7 @@ const ExercBasic = () => {
   return (
     <>
       <section className="exerc_container">
-        <h2>Ejercicios Básicos</h2>
+        <h2>Ejercicios Básicos y Variaciones</h2>
         {loading ? (
           <div className="spinner"></div>
         ) : (

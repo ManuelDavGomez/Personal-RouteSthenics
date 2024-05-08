@@ -110,6 +110,8 @@ const post = await postRes.json();
                   <h4 class="route-primary">✔ Principal</h4>
                 ) : basicsUrl.route === "Alternativo" ? (
                   <h4 class="route-alternative">✖ Alternativo</h4>
+                ) : basicsUrl.route === "Sin Progreso" ? (
+                  <h4 class="route-nothing">❔ Sin Progreso</h4>
                 ) : (
                   <p class="Text">Error</p>
                 )}

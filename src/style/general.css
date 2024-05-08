@@ -6,12 +6,13 @@
 
 .route-alternative,
 .route-primary,
-.route-imposible {
+.route-imposible,
+.route-nothing {
   font-family: sans-serif;
   text-align: start;
   margin-top: 20px;
 }
-
+ 
 #principiante {
   color: green;
 }
@@ -58,6 +59,10 @@
   color: red;
 }
 
+.route-nothing {
+  color: gray;
+}
+
 .container_general h1 {
   background: #fad5a6;
   background: -webkit-linear-gradient(to left, #fad5a6 0%, #8c87e5 100%);
@@ -88,6 +93,7 @@
 .Title {
   color: white;
   font-family: "aero";
+  text-align: center;
 }
 .Text {
   font-size: 1.125rem;
@@ -160,6 +166,7 @@
   color: white;
   font-family: sans-serif;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .video {

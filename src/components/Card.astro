@@ -2,9 +2,10 @@
 interface Props {
   nombre: string;
   descripcion?: string;
+  condicional: boolean;
 }
 
-const { nombre, descripcion } = Astro.props;
+const { nombre, descripcion, condicional } = Astro.props;
 ---
 
 <section class="card_container">
@@ -14,9 +15,17 @@ const { nombre, descripcion } = Astro.props;
     {descripcion}
   </p>
 
-  <a href="/musica">
-    <input type="button" value="Ver Musica" class="Btn_card" />
-  </a>
+  {
+    condicional ? (
+      <a href="/musica">
+        <input type="button" value="Ver Musica" class="Btn_card" />
+      </a>
+    ) : (
+      <a href="https://routesthenic.blogspot.com" target="_blank">
+        <input type="button" value="Ver Blog" class="Btn_card" />
+      </a>
+    )
+  }
 </section>
 
 <style>
@@ -45,6 +54,7 @@ const { nombre, descripcion } = Astro.props;
 
   .card_container h2 {
     padding-bottom: 20px;
+    text-align: center;
   }
 
   .card_container p {

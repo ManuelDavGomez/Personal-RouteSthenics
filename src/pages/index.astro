@@ -7,12 +7,14 @@ import Material from "../components/Exercise/Material.jsx";
 import Warm from "../components/Exercise/Warm";
 import HeroVideo from "../components/Hero_video.astro";
 import Card from "../components/Card.astro";
+
 import "../style/pageGeneral.css";
+
 ---
 
 <Layout title="Calisthenics Roadmaps">
   <HeroVideo video={Hero} />
- 
+
   <section class="container_general">
     <section class="hero_home">
       <h1>Roadmaps para calistenicos</h1>
@@ -34,11 +36,10 @@ import "../style/pageGeneral.css";
     <Material client:idle />
     <hr class="line" />
 
-
   </section>
   <Card
-  nombre="Mi playlist musical"
-  descripcion="Aquí te presento una selección de mis canciones favoritas para acompañar tus entrenamientos. Creo que estas melodías te infundirán la energía y motivación necesarias para alcanzar tus metas fitness. Espero que disfrutes de la variedad de estilos musicales que he elegido y que te impulsen a dar lo mejor de ti en cada sesión de ejercicio."
-/>
+    nombre="Mi playlist musical"
+    descripcion="Aquí te presento una selección de mis canciones favoritas para acompañar tus entrenamientos. Creo que estas melodías te infundirán la energía y motivación necesarias para alcanzar tus metas fitness. Espero que disfrutes de la variedad de estilos musicales que he elegido y que te impulsen a dar lo mejor de ti en cada sesión de ejercicio."
+    condicional={true}
+  />
 </Layout>
-

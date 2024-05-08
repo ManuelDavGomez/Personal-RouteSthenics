@@ -177,6 +177,8 @@ const post = await postRes.json();
                   <h4 class="route-alternative">✖ Alternativo</h4>
                 ) : youtubeUrl.route === "Imposible" ? (
                   <h4 class="route-imposible">☠ Imposible</h4>
+                ) : youtubeUrl.route === "Sin Progreso" ? (
+                  <h4 class="route-nothing">❔ Sin Progreso</h4>
                 ) : (
                   <p class="Text">Error</p>
                 )}
