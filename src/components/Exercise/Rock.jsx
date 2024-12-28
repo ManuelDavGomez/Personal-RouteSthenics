@@ -8,7 +8,7 @@ const Rock = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/rock")
+    fetch("https://routesthenics-api.vercel.app/rock")
       .then((res) => res.json())
       .then((data) => {
         setRocks(data);

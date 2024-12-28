@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroVideo from "../components/Hero_video.astro";
 import "../style/pageGeneral.css";
 
-const skillsRes = await fetch(`http://localhost:3000/exercise`);
+const skillsRes = await fetch(`https://routesthenics-api.vercel.app/exercise`);
 const skills = await skillsRes.json();
 
 export function truncateText(text, maxLength) {

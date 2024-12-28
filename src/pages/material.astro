@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroVideo from "../components/Hero_video.astro";
 import "../style/pageGeneral.css";
 
-const materialRes = await fetch(`http://localhost:3000/material`);
+const materialRes = await fetch(`https://routesthenics-api.vercel.app/material`);
 const material = await materialRes.json();
 
 function truncateText(text, maxLength) {

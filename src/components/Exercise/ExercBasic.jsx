@@ -8,7 +8,7 @@ const ExercBasic = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/exercisebasic")
+    fetch("https://routesthenics-api.vercel.app/exercisebasic")
       .then((res) => res.json())
       .then((data) => {
         setBasics(data);

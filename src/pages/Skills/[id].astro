@@ -6,7 +6,7 @@ import "../../style/general.css";
 import HeroVideo from "../../components/Hero_video.astro";
 
 export async function getStaticPaths() {
-  const data = await fetch("http://localhost:3000/exercise").then((response) =>
+  const data = await fetch("https://routesthenics-api.vercel.app/exercise").then((response) =>
     response.json()
   );
 
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 
-const postRes = await fetch(`http://localhost:3000/exercise/${id}`);
+const postRes = await fetch(`https://routesthenics-api.vercel.app/exercise/${id}`);
 const post = await postRes.json();
 ---
 
@@ -188,4 +188,5 @@ const post = await postRes.json();
       </section>
     </article>
   </section>
+  
 </Layout>

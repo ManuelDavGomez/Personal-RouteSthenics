@@ -8,7 +8,7 @@ const Material = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/material")
+    fetch("https://routesthenics-api.vercel.app/material")
       .then((res) => res.json())
       .then((data) => {
         setMaterials(data);

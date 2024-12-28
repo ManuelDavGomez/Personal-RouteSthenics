@@ -8,7 +8,7 @@ const Warm = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/warmup")
+    fetch("https://routesthenics-api.vercel.app/warmup")
       .then((res) => res.json())
       .then((data) => {
         setWarms(data);

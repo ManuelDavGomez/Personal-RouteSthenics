@@ -8,7 +8,7 @@ const Electronica = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/electronica")
+    fetch("https://routesthenics-api.vercel.app/electronica")
       .then((res) => res.json())
       .then((data) => {
         setElectros(data);

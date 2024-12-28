@@ -4,7 +4,6 @@ import Foot from "../components/Footer.astro";
 import Faq from "../components/Faq.astro";
 import Card from "../components/Card.astro";
 
-
 interface Props {
   title: string;
 }
@@ -42,12 +41,6 @@ const { title } = Astro.props;
       <slot />
 
       <Faq />
-
-      <Card
-      nombre="Mi Blog: Articulos Nuevos Seguidos"
-      descripcion="¡Descubre el camino hacia tu mejor versión física y mental con nuestro blog de calistenia! ¿Estás listo para desafiar tus límites, esculpir tu cuerpo y alcanzar tus metas fitness de una manera completamente nueva? Sumérgete en un universo de fuerza, flexibilidad y determinación con nuestros consejos, rutinas y secretos de la calistenia. ¡Únete a nuestra comunidad y deja que juntos alcancemos nuevas alturas! Tu transformación comienza aquí. ¡Bienvenido al mundo de la calistenia!"
-      condicional={false}
-    />
     </main>
     <Foot />
   </body>
@@ -110,6 +103,7 @@ const { title } = Astro.props;
     background: rgba(0, 0, 0, 0.3);
   }
   /* ----- */
+
   .hero_home {
     width: 100%;
     margin-bottom: 60px;
