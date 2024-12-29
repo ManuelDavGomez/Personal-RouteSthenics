@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     };
   });
 }
-
+ 
 const { id } = Astro.params;
 
 const postRes = await fetch(`https://routesthenics-api.vercel.app/exercise/${id}`);
