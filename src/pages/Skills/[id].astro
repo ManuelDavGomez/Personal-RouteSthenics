@@ -3,6 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import Hero9 from "../../videos/hero9.mp4";
 import { YouTube } from "astro-embed";
 import "../../style/general.css";
+
+import { Disqus } from "astro-disqus";
+import Comments from "../../components/Comments.jsx";
+
+
+
 import HeroVideo from "../../components/Hero_video.astro";
 
 export async function getStaticPaths() {
@@ -188,5 +194,5 @@ const post = await postRes.json();
       </section>
     </article>
   </section>
-  
+  <Comments client:only/>
 </Layout>
