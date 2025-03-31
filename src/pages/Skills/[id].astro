@@ -3,18 +3,15 @@ import Layout from "../../layouts/Layout.astro";
 import Hero9 from "../../videos/hero9.mp4";
 import { YouTube } from "astro-embed";
 import "../../style/general.css";
-
-import { Disqus } from "astro-disqus";
 import Comments from "../../components/Comments.jsx";
-
-
+import Image from "astro/components/Image.astro";
 
 import HeroVideo from "../../components/Hero_video.astro";
 
 export async function getStaticPaths() {
-  const data = await fetch("https://routesthenics-api.vercel.app/exercise").then((response) =>
-    response.json()
-  );
+  const data = await fetch(
+    "https://routesthenics-api.vercel.app/exercise"
+  ).then((response) => response.json());
 
   return data.map((post: { _id: String }) => {
     return {
@@ -22,17 +19,19 @@ export async function getStaticPaths() {
     };
   });
 }
- 
+
 const { id } = Astro.params;
 
-const postRes = await fetch(`https://routesthenics-api.vercel.app/exercise/${id}`);
+const postRes = await fetch(
+  `https://routesthenics-api.vercel.app/exercise/${id}`
+);
 const post = await postRes.json();
 ---
 
 <Layout title="RouteSthenics - Skills">
   <HeroVideo video={Hero9} />
   <section class="container_general">
-    <h1>
+    <h1 class="title">
       {
         post.skillDifficulty === "Imposible" ||
         post.skillDifficulty === "Elite" ||
@@ -44,6 +43,14 @@ const post = await postRes.json();
     <article class="containers_generals">
       <section class="containers_one">
         <h2 class="Title">{post.exerciseName}</h2>
+        {
+          post.youtubeURLs && post.youtubeURLs[0] && (
+            <YouTube
+              id={post.youtubeURLs[0].url.split("v=")[1].split("&")[0]}
+              class="videoBanner"
+            />
+          )
+        }
         <p class="Text">{post.exerciseDesc}</p>
 
         <h4 class="Texts"><span>Advertencia:</span></h4>
@@ -172,27 +179,47 @@ const post = await postRes.json();
 
       <section class="containers_two">
         {
-          post.youtubeURLs &&
-            post.youtubeURLs.map((youtubeUrl) => (
-              <section class="exercise_container">
-                <h3>{youtubeUrl.name}</h3>
-                <YouTube id={youtubeUrl.url} class="video" />
-                {youtubeUrl.route === "Principal" ? (
-                  <h4 class="route-primary">✔ Principal</h4>
-                ) : youtubeUrl.route === "Alternativo" ? (
-                  <h4 class="route-alternative">✖ Alternativo</h4>
-                ) : youtubeUrl.route === "Imposible" ? (
-                  <h4 class="route-imposible">☠ Imposible</h4>
-                ) : youtubeUrl.route === "Sin Progreso" ? (
-                  <h4 class="route-nothing">❔ Sin Progreso</h4>
-                ) : (
-                  <p class="Text">Error</p>
-                )}
-              </section>
-            ))
+          post.youtubeURLs?.slice(1).map((youtubeUrl) => (
+            <section class="exercise_container">
+              <h3>{youtubeUrl.name}</h3>
+              <Image
+                src={youtubeUrl.url}
+                alt={`Miniatura de ${youtubeUrl.name}`}
+                class="video"
+                width="400"
+                loading="lazy"
+                height={300}
+              />
+              {youtubeUrl.route === "Principal" ? (
+                <h4 class="route-primary">✔ Principal</h4>
+              ) : youtubeUrl.route === "Alternativo" ? (
+                <h4 class="route-alternative">✖ Alternativo</h4>
+              ) : youtubeUrl.route === "Imposible" ? (
+                <h4 class="route-imposible">☠ Imposible</h4>
+              ) : youtubeUrl.route === "Sin Progreso" ? (
+                <h4 class="route-nothing">❔ Sin Progreso</h4>
+              ) : (
+                <p class="Text">Error</p>
+              )}
+            </section>
+          ))
         }
       </section>
     </article>
   </section>
-  <Comments client:only/>
+  <Comments client:only />
 </Layout>
+
+<style>
+  .videoBanner {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+
+  .title {
+    padding-bottom: 100px;
+  }
+</style>

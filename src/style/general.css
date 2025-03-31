@@ -171,10 +171,10 @@
 
 .video {
   width: 100%;
+  object-fit: cover;
+  object-position: bottom;
 }
-.video img {
-  width: 100%;
-}
+
 
 @media (min-width: 530px) {
   .video {
@@ -204,7 +204,7 @@
   }
 
   .containers_one {
-    width: 40%;
+    width: 50%;
   }
 
   .containers_two {
@@ -221,4 +221,11 @@
     width: 1090px;
     gap: 0px;
   }
+}
+
+@media (min-width: 1500px) {
+  .containers_generals {
+    width: 1300px;
+  }
+  
 }
