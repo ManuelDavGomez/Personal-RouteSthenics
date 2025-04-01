@@ -46,8 +46,9 @@ const post = await postRes.json();
         {
           post.youtubeURLs && post.youtubeURLs[0] && (
             <YouTube
-              id={post.youtubeURLs[0].url.split("v=")[1].split("&")[0]}
+              id={post.youtubeURLs[0].url}
               class="videoBanner"
+          
             />
           )
         }
