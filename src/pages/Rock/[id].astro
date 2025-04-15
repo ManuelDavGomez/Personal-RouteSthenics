@@ -63,7 +63,7 @@ const post = await postRes.json();
               <section class="exercise_container">
                 <h3>{rockUrl.name}</h3>
                 <a href={rockUrl.url} class="video" target="_blank">
-                  <img src={rockUrl.image} alt="Miniatura del video" />
+                  <img src={rockUrl.image} alt="Miniatura del video" loading="lazy"/>
                 </a>
               </section>
             ))

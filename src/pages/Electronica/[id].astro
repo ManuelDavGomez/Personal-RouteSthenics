@@ -65,7 +65,7 @@ const post = await postRes.json();
               <section class="exercise_container">
                 <h3>{electroUrl.name}</h3>
                 <a href={electroUrl.url} class="video" target="_blank">
-                  <img src={electroUrl.image} alt="Miniatura del video" />
+                  <img src={electroUrl.image} alt="Miniatura del video" loading="lazy"/>
                 </a>
               </section>
             ))

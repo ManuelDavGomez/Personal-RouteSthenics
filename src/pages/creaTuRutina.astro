@@ -1,0 +1,15 @@
+---
+import Rutinas from "../components/Rutinas/Rutinas.jsx";
+import Layout from "../layouts/Layout.astro";
+import Hero2 from "../videos/hero2.mp4";
+import HeroVideo from "../components/Hero_video.astro";
+---
+
+<Layout title="RouteSthenics - Historia">
+  <HeroVideo video={Hero2} />
+  <section class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-4">Crea tu rutina</h1>
+    <p class="mb-6">Aquí puedes crear tu propia rutina de ejercicios.</p>
+    <Rutinas client:load />
+  </section>
+</Layout>
