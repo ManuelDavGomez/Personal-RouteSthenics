@@ -175,15 +175,15 @@ const post = await postRes.json();
               <li class="skillItem">{skill}</li>
             ))
           }
-        </ul>
+        </ul> 
 
         <h4 class="Texts"><span>Video Promocional</h4>
         {
           post.youtubeURLs && post.youtubeURLs[0] && (
-            <YouTube
-              id={post.youtubeURLs[1].url}
+            <YouTube  
+              id={post.youtubeURLs[1].url} 
               class="videoBanner"
-            />
+            /> 
           )
         }
       </section>
