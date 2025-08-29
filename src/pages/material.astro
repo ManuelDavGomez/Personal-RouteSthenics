@@ -1,7 +1,6 @@
 ---
 import Hero7 from "../videos/hero7.mp4";
 import Layout from "../layouts/Layout.astro";
-import HeroVideo from "../components/Hero_video.astro";
 import "../style/pageGeneral.css";
 
 const materialRes = await fetch(`https://routesthenics-api.vercel.app/material`);
@@ -16,7 +15,6 @@ function truncateText(text, maxLength) {
 ---
 
 <Layout title="RouteSthenics - Equipamiento">
-  <HeroVideo video={Hero7}/>
 
   <section class="container_general">
     <h1>Equipacion (Materiales)</h1>

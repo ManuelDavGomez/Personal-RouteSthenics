@@ -1,47 +1,85 @@
 ---
 import Hero5 from "../videos/hero5.mp4";
 import Layout from "../layouts/Layout.astro";
-import HeroVideo from "../components/Hero_video.astro";
+
 import "../style/pageGeneral.css";
 
 const skillsRes = await fetch(`https://routesthenics-api.vercel.app/exercise`);
 const skills = await skillsRes.json();
 
+// Truncar texto
 export function truncateText(text, maxLength) {
-  if (text == null) {
-    return "";
-  }
-  if (text.length <= maxLength) {
-    return text;
-  }
-  return text.substring(0, maxLength) + "...";
+  if (!text) return "";
+  return text.length <= maxLength ? text : text.substring(0, maxLength) + "...";
 }
 ---
 
 <Layout title="RouteSthenics - Skills">
-  <HeroVideo video={Hero5} />
+
 
   <section class="container_general">
     <h1>Habilidades (Skills)</h1>
     <section>
-      <ul class="exercise_containers">
+      <ul id="exerciseList" class="exercise_containers">
         {
-          skills.map(
-            (skill: {
-              _id: String;
-              exerciseName: String;
-              exerciseDesc: String;
-            }) => (
-              <a href={`/Skills/${skill._id}`}>
-                <section class="exercise_items">
-                  <h4>{skill.exerciseName}</h4>
-                  <p>{truncateText(skill.exerciseDesc, 84)}</p>
-                </section>
-              </a>
-            )
-          )
+          skills.map((skill) => (
+            <a href={`/Skills/${skill._id}`} class="exercise_item hidden">
+              <section class="exercise_items">
+                <h4>{skill.exerciseName}</h4>
+                <p>{truncateText(skill.exerciseDesc, 84)}</p>
+              </section>
+            </a>
+          ))
         }
       </ul>
+
+      <button id="loadMoreBtn" class="btn_load_more">Cargar más</button>
     </section>
   </section>
+
+  <script>
+    // Client-side script
+    const itemsPerPage = 6;
+    let currentVisible = 0;
+
+    const items = document.querySelectorAll(".exercise_item");
+    const btn = document.getElementById("loadMoreBtn");
+
+    function showMore() {
+      for (let i = currentVisible; i < currentVisible + itemsPerPage; i++) {
+        if (items[i]) items[i].classList.remove("hidden");
+      }
+      currentVisible += itemsPerPage;
+
+      if (currentVisible >= items.length) {
+        btn.style.display = "none";
+      }
+    }
+
+    // Inicializar
+    showMore();
+    btn.addEventListener("click", showMore);
+  </script>
 </Layout>
+
+<style>
+  .hidden {
+    display: none;
+  }
+
+  .btn_load_more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 18px;
+    background: #1c2e4480;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn_load_more:hover {
+    background: #273f5c80;
+  }
+</style>

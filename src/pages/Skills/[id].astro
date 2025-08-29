@@ -6,7 +6,6 @@ import "../../style/general.css";
 import Comments from "../../components/Comments.jsx";
 import Image from "astro/components/Image.astro";
 
-import HeroVideo from "../../components/Hero_video.astro";
 
 export async function getStaticPaths() {
   const data = await fetch(
@@ -29,7 +28,7 @@ const post = await postRes.json();
 ---
 
 <Layout title="RouteSthenics - Skills">
-  <HeroVideo video={Hero9} />
+
   <section class="container_general">
     <h1 class="title">
       {

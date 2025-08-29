@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Hero16 from "../../videos/hero16.mp4";
 import "../../style/general.css";
-import HeroVideo from "../../components/Hero_video.astro";
+
 
 export async function getStaticPaths() {
   const data = await fetch("https://routesthenics-api.vercel.app/rock").then((response) =>
@@ -23,7 +23,7 @@ const post = await postRes.json();
 ---
 
 <Layout title="RoutheSthenics - Rock">
-  <HeroVideo video={Hero16} />
+
   <section class="container_general">
     <h1>Musica Rock</h1>
     <article class="containers_generals">
