@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Hero9 from "../../videos/hero9.mp4";
 import { YouTube } from "astro-embed";
 import "../../style/general.css";
 import Comments from "../../components/Comments.jsx";
@@ -27,8 +26,7 @@ const postRes = await fetch(
 const post = await postRes.json();
 ---
 
-<Layout title="RouteSthenics - Skills">
-
+<Layout title=`RouteSthenics - ${post.exerciseName}`>
   <section class="container_general">
     <h1 class="title">
       {
@@ -185,7 +183,7 @@ const post = await postRes.json();
             /> 
           )
         }
-      </section>
+      </section> 
 
       <section class="containers_two">
         {
